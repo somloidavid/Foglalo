@@ -1,7 +1,14 @@
 # sany
 ugymond sanyi
 
-# Ohio Takes Over
+# Ohio Takes Over The Galaxy
 Honfoglalo csak nem
-Usa államait kell elfoglalni
-utána franciaország v Világtérkép
+A Tejútrendszert kell elfoglalni
+utána franciaország
+Free Kriszh
+
+# Feladat Kiosztás
+Zoomy Zoom - Ádám
+Quiz Ablak - Dávid
+Logo - Bence
+Game Mode-ok - Közös
