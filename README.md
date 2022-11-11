@@ -12,5 +12,6 @@
     <li>HUD(Pontozás, HP, Játékos számára fontos információk kiírása) - Bence</li>
     <li>Kérdésírás - Közös</li>
     <li>Game Mode-ok(Single, Local-Multi) - Közös</li>
+    <li>Asset rajzolás(Pixel Art) - Ádám</li>
 </ul>
 
