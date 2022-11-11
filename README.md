@@ -1,14 +1,13 @@
-# sany
-ugymond sanyi
+<h1> Ohio Takes Over The Galaxy</h1>
+<p>Honfoglalo csak nem</p>
+<p>A Tejútrendszert kell elfoglalni</p>
+<p>utána franciaország</p>
+<p>Free Kriszh</p>
 
-# Ohio Takes Over The Galaxy
-Honfoglalo csak nem
-A Tejútrendszert kell elfoglalni
-utána franciaország
-Free Kriszh
-
-# Feladat Kiosztás
-Zoomy Zoom - Ádám
-Quiz Ablak - Dávid
-Logo - Bence
-Game Mode-ok - Közös
+<h1> Feladat Kiosztás</h1>
+<p>Ráközelítés Effekt A Bolygókra - Ádám</p>
+<p>Quiz Kérdések Felugró Ablaka - Dávid</p>
+<p>Logo - Bence</p>
+<p>UI(Pontozás, HP) - Bence</p>
+<p>Kérdésírás -Közös</p>
+<p>Game Mode-ok - Közös</p>
