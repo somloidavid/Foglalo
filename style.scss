@@ -1,0 +1,52 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow-y: hidden;
+
+    #zum {
+        position: absolute;
+        display: none;
+        width: 100%;
+        height: 100vh;
+        background-image: url(img/zoomError.jfif);    
+        background-repeat: no-repeat;
+        background-size: cover;
+        
+        h1{
+            font-size: 20vh ;
+            text-align: center;
+            color: red;
+            text-shadow: 2vh 2vh black;
+        }
+    }
+
+
+    div#main{
+        background-image: url(img/background.jpg);
+        width: 100%;
+        height: 100vh;
+        display: block;
+
+        p{
+            color: white;
+            font-size: 5vh;
+            text-align: center;
+        }
+
+        .start{
+            background-color: red;
+            width: 40%;
+            margin: auto;
+            height: 3vh;
+            margin-bottom: 1.5vh;
+
+            p{
+                font-size: 2vh;
+                text-align: center;
+            }
+        }
+    }
+}

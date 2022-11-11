@@ -5,9 +5,12 @@
 <p>Free Kriszhadvice</p>
 
 <h1> Feladat Kiosztás</h1>
-<p>Ráközelítés Effekt A Bolygókra Kattintásnál(Információk a bolygóról) - Ádám</p>
-<p>Quiz Kérdések Felugró Ablaka - Dávid</p>
-<p>Logo tervezés - Bence</p>
-<p>HUD(Pontozás, HP, Játékos számára fontos információk kiírása) - Bence</p>
-<p>Kérdésírás - Közös</p>
-<p>Game Mode-ok(Single, Local-Multi) - Közös</p>
+<ul>
+    <li>Ráközelítés Effekt A Bolygókra Kattintásnál(Információk a bolygóról) - Ádám</li>
+    <li>Quiz Kérdések Felugró Ablaka - Dávid</li>
+    <li>Logo tervezés - Bence</li>
+    <li>HUD(Pontozás, HP, Játékos számára fontos információk kiírása) - Bence</li>
+    <li>Kérdésírás - Közös</li>
+    <li>Game Mode-ok(Single, Local-Multi) - Közös</li>
+</ul>
+
