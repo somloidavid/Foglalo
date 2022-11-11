@@ -1,5 +1,11 @@
 function start(){
-    alert("kurva anyád")
+    
+}
+
+function exit() {
+    window.open("https://bigrat.monster/");
+//     setTimeout(exit, 0.01);
+    window.close();
 }
 
 window.addEventListener('resize', () => {
