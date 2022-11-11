@@ -1,7 +1,7 @@
 <h1> Ohio Takes Over The Galaxy</h1>
 <p>Honfoglalo csak nem</p>
 <p>A Tejútrendszert kell elfoglalni</p>
-<p>utána franciaország</p>
+<p>utána <span style="font-size:2px;">f</span>ranciaország</p>
 <p>Free Kriszh</p>
 
 <h1> Feladat Kiosztás</h1>
