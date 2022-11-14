@@ -59,6 +59,7 @@ body div#main div#popup {
   width: 55%;
   height: 50vh;
   margin: 10% auto;
+  visibility: hidden;
 }
 body div#main div#popup h1 {
   text-align: center;
