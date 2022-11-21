@@ -27,10 +27,20 @@ body div#main {
   height: 100vh;
   display: block;
 }
+body div#main h1 {
+  color: red;
+  font-size: 15vh;
+  text-align: center;
+}
 body div#main p {
   color: white;
   font-size: 5vh;
   text-align: center;
+}
+body div#main img.character {
+  width: 20vw;
+  height: 10vh;
+  margin-right: 4vw;
 }
 body div#main .button {
   background-color: red;
