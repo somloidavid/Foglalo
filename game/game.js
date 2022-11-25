@@ -12,16 +12,13 @@ class Obj {
         }
 
         this.distance_from_cam = dst_cam;
-
-        this.center = {
-            x: x+width/2,
-            y: y+height/2,
-        }
     }
 
-    refresh_center() {
-        this.center.x = this.pos.x+this.size.width/2;
-        this.center.y = this.pos.y+this.size.height/2;
+    get_center() {
+        return {
+            x: this.pos.x - this.size.width / 2,
+            y: this.pos.y - this.size.height / 2,
+        }
     }
 }
 
@@ -30,10 +27,41 @@ let ctx;
 let imgs;
 let objects;
 
+let camera = {
+    x: 0,
+    y: 0,
+    z: 1,
+}
+
 let mouse = {
     x: 0,
     y: 0,
     clicked: false,
+}
+
+let min_distance = undefined;
+
+function setCoordsToCenter(Coord, X) {
+    if (X) {
+        return Coord + window.innerWidth / 2;
+    }
+
+    return Coord + window.innerHeight / 2;
+}
+
+function isCollideWithCursor(obj) {
+    let mx = mouse.x - window.innerWidth / 2;
+    let my = mouse.y - window.innerHeight / 2;
+
+
+    let relativeZ = obj.distance_from_cam * camera.z;
+
+
+    // if (Math.pow(mx - (obj.pos.x / relativeZ), 2) + Math.pow(my - (obj.pos.y / relativeZ), 2) <= Math.pow((obj.size.width / 2) / relativeZ, 2)) {
+    //     return true;
+    // }
+
+    return false;
 }
 
 function draw() {
@@ -42,25 +70,30 @@ function draw() {
     for (let i = 0; i < objects.length; i++) {
 
         let obj = objects[i];
-        let objX = obj.pos.x / obj.distance_from_cam;
-        let objY = obj.pos.y / obj.distance_from_cam;
+        let relativeZ = obj.distance_from_cam * camera.z;
+
+        let objX = setCoordsToCenter((obj.get_center().x + camera.x) / relativeZ, true);
+        let objY = setCoordsToCenter((obj.get_center().y + camera.y) / relativeZ, false);
+
 
         if (mouse.clicked) {
-            if (Math.pow(mouse.x - (obj.center.x / obj.distance_from_cam), 2) + Math.pow(mouse.y - (obj.center.y / obj.distance_from_cam), 2) <= Math.pow((obj.size.width/2) / obj.distance_from_cam, 2)) {
-                obj.pos.x = mouse.x * obj.distance_from_cam - obj.size.width / 2;
-                obj.pos.y = mouse.y * obj.distance_from_cam - obj.size.width / 2;
-                obj.refresh_center();
+            if (isCollideWithCursor(obj)) {
+                camera.x += 1;
+
             }
         }
 
-        ctx.drawImage(imgs[obj.imgSrc], objX, objY, obj.size.width / obj.distance_from_cam, obj.size.height / obj.distance_from_cam);
+        let brightness = 1 < min_distance / relativeZ ? 1 : min_distance / relativeZ;
+
+        ctx.filter = 'brightness(' + brightness + ')';
+        ctx.drawImage(imgs[obj.imgSrc], objX, objY, obj.size.width / relativeZ, obj.size.height / relativeZ);
     }
 }
 
 function createNewImg(path) {
     let htmlImg = document.createElement("IMG");
     htmlImg.src = path;
-    htmlImg.style.filter = 'brightness(0.2)';
+    htmlImg.style.border = "2px solid white"
     document.body.appendChild(htmlImg);
 
     return htmlImg;
@@ -79,8 +112,10 @@ function main() {
     ];
 
     objects = [
-        new Obj(0, 0, 0, 256, 256, 0.7),
+        new Obj(0, 0, 0, 256, 256, 1),
     ];
+
+    min_distance = objects[objects.length - 1].distance_from_cam;
 
     window.requestAnimationFrame(loop)
 
@@ -94,16 +129,16 @@ function loop() {
 
 var lastRender = 0
 window.onload = main
-window.addEventListener("mousemove", function(event) {
+window.addEventListener("mousemove", function (event) {
     mouse.x = event.clientX;
     mouse.y = event.clientY;
 });
 
-window.addEventListener("mousedown", function(event) {
+
+window.addEventListener("mousedown", function (event) {
     mouse.clicked = true;
 });
 
-
-window.addEventListener("mouseup", function(event) {
+window.addEventListener("mouseup", function (event) {
     mouse.clicked = false;
 });
