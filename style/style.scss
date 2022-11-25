@@ -68,9 +68,27 @@ body {
             height: 50vh;
             margin: 10% auto;
             visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.85s;
 
-            h1{
-                text-align: center;
+            .headline{
+                height: 6vh;
+
+                h1{
+                    text-align: center;
+                    width: 80%;
+                    margin-left: 10%;
+                    height: 6vh;
+                    font-size: 3.5vh;
+                }
+    
+                #timer{
+                    background-color: black;
+                    height: 6vh;
+                    width: 14%;
+                    display: inline-block;
+                    float: right;
+                }
             }
 
             div#answer{
