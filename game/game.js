@@ -5,6 +5,8 @@ function inspect(a){
     let harmadik = document.getElementById("harmadik");
     let negyedik = document.getElementById("negyedik");
     
+    // if(a == 1){
+    //     elso.id = "elso highlighted";
+    // }
 
-    }
 }

@@ -39,25 +39,22 @@ body div#main p {
 }
 body div#main img.character {
   width: 20vw;
-  height: 10vh;
-  margin-right: 4vw;
+  height: 20vh;
 }
-body div#main img#highlighted {
+body div#main .highlighted {
+  transform: scale(2, 2);
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 10%;
 }
-body div#main div.mindcontaier {
-  display: flex;
-  flex-direction: row;
+body div#main div.keptarto {
+  margin: 1px;
 }
 body div#main div.flexcontainer {
   display: flex;
   flex-direction: row;
-}
-body div#main div.flexcontainer2 {
-  display: flex;
-  flex-direction: row;
+  flex-wrap: wrap-reverse;
+  justify-content: space-between;
 }
 body div#main .button {
   background-color: red;
