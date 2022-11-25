@@ -58,7 +58,22 @@ body {
             top:50%;
             left: 50%;
         }
-        
+        div.keptarto{
+
+        }
+        div.mindcontaier{
+            display:flex ;
+            flex-direction: row;
+        }
+        div.flexcontainer{
+            display: flex;
+            flex-direction: row; 
+        }
+        div.flexcontainer2{
+            display: flex;
+            flex-direction: row;
+        }
+
 
         .button{
             background-color: red;

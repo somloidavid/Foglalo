@@ -42,6 +42,23 @@ body div#main img.character {
   height: 10vh;
   margin-right: 4vw;
 }
+body div#main img#highlighted {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+body div#main div.mindcontaier {
+  display: flex;
+  flex-direction: row;
+}
+body div#main div.flexcontainer {
+  display: flex;
+  flex-direction: row;
+}
+body div#main div.flexcontainer2 {
+  display: flex;
+  flex-direction: row;
+}
 body div#main .button {
   background-color: red;
   width: 40%;
