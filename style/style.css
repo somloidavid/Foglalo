@@ -6,6 +6,13 @@
 body {
   overflow-y: hidden;
 }
+@font-face {
+  body {
+    font-family: "PixelFont";
+    src: url(../font/alterebro-pixel-font.ttf) format("truetype");
+    font-family: PixelFont;
+  }
+}
 body #zum {
   position: absolute;
   display: none;
@@ -27,6 +34,7 @@ body div#main {
   height: 100vh;
   display: block;
   overflow: auto;
+  font-family: "PixelFont";
 }
 body div#main p {
   color: white;
@@ -71,13 +79,12 @@ body div#main div#popup .headline h1 {
   width: 80%;
   margin-left: 10%;
   height: 6vh;
-  font-size: 3.5vh;
+  font-size: 64px;
 }
 body div#main div#popup .headline #timer {
   background-color: black;
   height: 6vh;
   width: 14%;
-  display: inline-block;
   float: right;
 }
 body div#main div#popup div#answer {
@@ -102,4 +109,24 @@ body div#main div#popup img {
   height: 35vh;
   float: right;
   margin: 5vh;
+}
+body div#main #notif {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.85s;
+  width: 55%;
+  height: 30vh;
+  top: 35vh;
+  left: 25%;
+  background-color: red;
+  position: absolute;
+}
+body div#main #notif div {
+  margin: 0vh auto;
+  height: 6vh;
+  top: 10vh;
+  position: relative;
+}
+body div#main #notif div p {
+  font-size: 6vh;
 }/*# sourceMappingURL=style.css.map */

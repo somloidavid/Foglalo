@@ -1,6 +1,5 @@
 class Question{
     constructor(q){
-        // const randb = Math.floor(Math.random() * 2) + 1;
         this.question = q[0];
         this.correct = q[1];
         this.answers = [q[1], q[2], q[3]];
@@ -33,6 +32,9 @@ function Popup(){
             clearInterval(interval);
             OffTimer();
         }
+        else if (answered){
+            clearInterval(interval);
+        }
     }, 1000);
 }
 
@@ -55,23 +57,10 @@ function Answer(a){
 }
 
 function OffTimer(){
-    let main = document.getElementById("main");
-    main.innerHTML = `<div id="notif"></div>`;
     let notif = document.getElementById("notif");
-    notif.style.width = "55%";
-    notif.style.height = "30vh";
-    notif.style.margin = "35vh auto";
-    notif.style.backgroundColor = "red";
-    notif.style.opacity = "0";
-    notif.style.transition = "opacity 1s";
-    notif.innerHTML = `<div id="OffTimerBox"><p id="OffTimerText">Lejárt az idő!</p></div>`
-    let OffTimerBox = document.getElementById("OffTimerBox");
-    OffTimerBox.style.margin = "12vh auto";
-    OffTimerBox.style.height = "6vh";
-    OffTimerBox.style.top = "10vh";
-    OffTimerBox.style.position = "relative";
-    let OffTimerText = document.getElementById("OffTimerText");
-    OffTimerText.style.fontSize = "6vh";
+    notif.style.visibility = "visible";
+    notif.style.opacity = "1";
+    document.getElementById("popup").style.visibility = "hidden";
 }
 
-Popup();
+Popup()

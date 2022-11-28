@@ -5,6 +5,11 @@
 
 body {
     overflow-y: hidden;
+    @font-face {
+        font-family: 'PixelFont';
+        src: url(../font/alterebro-pixel-font.ttf) format("truetype");
+        font-family: PixelFont;
+    }
 
     #zum {
         position: absolute;
@@ -30,7 +35,8 @@ body {
         height: 100vh;
         display: block;
         overflow: auto;
-        
+        font-family: 'PixelFont';
+
 
         p{
             color: white;
@@ -50,7 +56,7 @@ body {
                 text-align: center;
                 width: 100%;
                 height: 100%;
-
+                
                 a {
                     display: inline-block;
                     color: white;
@@ -79,14 +85,13 @@ body {
                     width: 80%;
                     margin-left: 10%;
                     height: 6vh;
-                    font-size: 3.5vh;
+                    font-size: 64px;
                 }
     
                 #timer{
                     background-color: black;
                     height: 6vh;
                     width: 14%;
-                    display: inline-block;
                     float: right;
                 }
             }
@@ -116,6 +121,29 @@ body {
                 height: 35vh;
                 float: right;
                 margin: 5vh ;
+            }
+        }
+
+        #notif{
+            visibility: hidden;
+            opacity:  0;
+            transition: opacity 0.85s;
+            width:  55%;
+            height: 30vh;
+            top: 35vh;
+            left: 25%;
+            background-color: red;
+            position: absolute;
+            
+            div{
+                margin: 0vh auto;
+                height: 6vh;
+                top:  10vh;
+                position: relative;
+
+                p{
+                    font-size:  6vh;
+                }
             }
         }
     }
