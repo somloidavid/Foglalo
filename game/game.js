@@ -25,6 +25,7 @@ class Obj {
 let canvas;
 let ctx;
 let imgs;
+
 let objects;
 let objToFocus;
 
@@ -32,6 +33,7 @@ let camera = {
     x: 0,
     y: 0,
     z: 1,
+    focus_zoom: 2.5,
     move: false,
 }
 
@@ -67,35 +69,19 @@ function isCollideWithCursor(obj) {
 }
 
 function camFocusOnObject(obj) {
-    camera.x += (-obj.pos.x - camera.x) / 10;
-    camera.y += (-obj.pos.y - camera.y) / 10;
-    camera.z += (1 - camera.z) / 10;
+    camera.x += (-obj.pos.x - camera.x) / 20;
+    camera.y += (-obj.pos.y - camera.y) / 20; 
+    camera.z += (1 / obj.distance_from_cam /camera.focus_zoom - camera.z) / 20;
 }
+function draw(obj) {
+    let relativeZ = obj.distance_from_cam * camera.z;
 
-function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    let objX = setCoordsToCenter((obj.get_center().x + camera.x) / relativeZ, true);
+    let objY = setCoordsToCenter((obj.get_center().y + camera.y) / relativeZ, false);
+    let brightness = 1 <= min_distance / camera.focus_zoom / relativeZ ? 1 : min_distance / camera.focus_zoom / relativeZ;
 
-    for (let i = 0; i < objects.length; i++) {
-        let obj = objects[i];
-        let relativeZ = obj.distance_from_cam * camera.z;
-
-        let objX = setCoordsToCenter((obj.get_center().x + camera.x) / relativeZ, true);
-        let objY = setCoordsToCenter((obj.get_center().y + camera.y) / relativeZ, false);
-
-        if (mouse.clicked) {
-            if (isCollideWithCursor(obj)) {
-                objToFocus = obj;
-                clicked = false;
-            }
-        }
-
-        camFocusOnObject(objToFocus);
-
-        let brightness = 1 < min_distance / relativeZ ? 1 : min_distance / relativeZ;
-
-        ctx.filter = 'brightness(' + brightness + ')';
-        ctx.drawImage(imgs[obj.imgSrc], objX, objY, obj.size.width / relativeZ, obj.size.height / relativeZ);
-    }
+    ctx.filter = 'brightness(' + brightness + ')';
+    ctx.drawImage(imgs[obj.imgSrc], objX, objY, obj.size.width / relativeZ, obj.size.height / relativeZ);
 }
 
 function createNewImg(path) {
@@ -114,15 +100,19 @@ function main() {
     mouse.clicked = false;
 
     ctx = canvas.getContext("2d");
+    ctx.imageSmoothingEnabled = false;
+    
 
     imgs = [
         createNewImg("../img/boojg.png"),
+        createNewImg("../img/planet0.png"),
+        createNewImg("../img/planet1.png"),
     ];
 
     objects = [
-        new Obj(0, 30, 200, 256, 256, 1.3),
-        new Obj(0, -200, 100, 256, 256, 0.9),
-        new Obj(0, 800, -100, 256, 256, 0.5),
+        new Obj(0, 30, 200, 92, 92, 1.9),
+        new Obj(1, -200, 100, 128, 128, 1.2),
+        new Obj(2, 300, 100, 256, 256, 0.7),
     ];
 
     min_distance = objects[objects.length - 1].distance_from_cam;
@@ -132,7 +122,20 @@ function main() {
 }
 
 function loop() {
-    draw();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (let i = 0; i < objects.length; i++) {
+        const obj = objects[i];
+        if (mouse.clicked) {
+            if (isCollideWithCursor(obj)) {
+                objToFocus = obj;
+                clicked = false;
+            }
+        }
+
+        camFocusOnObject(objToFocus);
+        draw(obj);
+    }
 
     window.requestAnimationFrame(loop)
 }
