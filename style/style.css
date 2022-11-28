@@ -27,6 +27,29 @@ body div#main {
   height: 100vh;
   display: block;
 }
+body div#main div.leiras {
+  height: 70vh;
+  width: 60vh;
+  position: absolute;
+  top: 30%;
+  left: 40%;
+}
+body div#main h1 {
+  width: 100%;
+  height: 20%;
+  font-size: 30px;
+  color: red;
+}
+body div#main h2 {
+  margin-top: 30px;
+  width: 100%;
+  height: 10%;
+  color: red;
+  text-align: center;
+}
+body div#main p.kleiras {
+  width: 100%;
+}
 body div#main h1 {
   color: red;
   font-size: 15vh;
@@ -40,19 +63,39 @@ body div#main p {
 body div#main img.character {
   width: 20vw;
   height: 20vh;
+  position: fixed;
 }
 body div#main .highlighted {
   transform: scale(2, 2);
   position: absolute;
-  top: 50%;
-  left: 10%;
+  top: 50% !important;
+  left: 10% !important;
+}
+body div#main #masodik {
+  position: absolute;
+  top: 6%;
+  left: 25%;
+}
+body div#main #harmadik {
+  position: absolute;
+  top: 6%;
+  left: 50%;
+}
+body div#main #elso {
+  position: absolute;
+  top: 6%;
+  left: 0%;
+}
+body div#main #negyedik {
+  position: absolute;
+  top: 6%;
+  left: 75%;
 }
 body div#main div.keptarto {
   margin: 1px;
 }
 body div#main div.flexcontainer {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap-reverse;
   justify-content: space-between;
 }

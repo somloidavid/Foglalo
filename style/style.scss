@@ -29,6 +29,31 @@ body {
         width: 100%;
         height: 100vh;
         display: block;
+
+        div.leiras{
+            height: 70vh;
+            width: 60vh;
+            position:absolute;
+            top: 30%;
+            left:40%;
+        }
+            h1{
+                width: 100%;
+                height: 20%;
+                font-size: 30px;
+                color: red;
+            }
+            h2{
+                margin-top: 30px;
+                width: 100%;
+                height: 10%;
+                color: red;
+                text-align: center;
+
+            }
+            p.kleiras{
+                width: 100%;
+            }
         
         h1{
             color: red;
@@ -44,6 +69,7 @@ body {
         img.character{
             width: 20vw;
             height: 20vh;
+            position: fixed;
             
             // display:block; 
             // z-index:999; 
@@ -56,17 +82,36 @@ body {
         .highlighted{
             transform: scale(2,2);
             position: absolute;
-            top:50%;
-            left:10%;
+            top:50% !important;
+            left:10% !important;
         }
-
+        #masodik{
+            position: absolute;
+            top: 6%;
+            left: 25%;
+        }
+        #harmadik{
+            position: absolute;
+            top: 6%;
+            left:50%;
+        }
+        #elso{
+            position: absolute;
+            top: 6%;
+            left:0%;
+        }
+        #negyedik{
+            position: absolute;
+            top: 6%;
+            left:75%;
+        }
         div.keptarto{
         margin: 1px;
         }
         div.flexcontainer{
             display: flex;
-            flex-direction: row; 
-            flex-wrap: wrap-reverse;
+            // flex-direction: row; 
+             flex-wrap: wrap-reverse;
             justify-content: space-between;
         }
 

@@ -1,12 +1,33 @@
 function inspect(a){
     console.log(a)
-    let elso = document.getElementById("elso");
-    let masodik = document.getElementById("masodik");
-    let harmadik = document.getElementById("harmadik");
-    let negyedik = document.getElementById("negyedik");
+    const elso = document.getElementById("elso");
+    const masodik = document.getElementById("masodik");
+    const harmadik = document.getElementById("harmadik");
+    const negyedik = document.getElementById("negyedik");
     
-    // if(a == 1){
-    //     elso.id = "elso highlighted";
-    // }
+    if(a == 1){
+        elso.classList.add("highlighted")
+        masodik.classList.remove("highlighted")
+        harmadik.classList.remove("highlighted")
+        negyedik.classList.remove("highlighted")        
+     }
+     if(a == 2){
+        masodik.classList.add("highlighted")
+        elso.classList.remove("highlighted")
+        harmadik.classList.remove("highlighted")
+        negyedik.classList.remove("highlighted")        
+     }
+     if(a == 3){
+        harmadik.classList.add("highlighted")
+        masodik.classList.remove("highlighted")
+        elso.classList.remove("highlighted")
+        negyedik.classList.remove("highlighted")        
+     }
+     if(a == 4){
+        negyedik.classList.add("highlighted")
+        masodik.classList.remove("highlighted")
+        harmadik.classList.remove("highlighted")
+        elso.classList.remove("highlighted")        
+     }
 
 }
