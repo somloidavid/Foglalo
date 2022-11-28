@@ -26,11 +26,13 @@ let canvas;
 let ctx;
 let imgs;
 let objects;
+let objToFocus;
 
 let camera = {
     x: 0,
     y: 0,
     z: 1,
+    move: false,
 }
 
 let mouse = {
@@ -57,31 +59,37 @@ function isCollideWithCursor(obj) {
     let relativeZ = obj.distance_from_cam * camera.z;
 
 
-    // if (Math.pow(mx - (obj.pos.x / relativeZ), 2) + Math.pow(my - (obj.pos.y / relativeZ), 2) <= Math.pow((obj.size.width / 2) / relativeZ, 2)) {
-    //     return true;
-    // }
+    if (Math.pow(mx - ((obj.pos.x + camera.x) / relativeZ), 2) + Math.pow(my - ((obj.pos.y + camera.y) / relativeZ), 2) <= Math.pow((obj.size.width / 2) / relativeZ, 2)) {
+        return true;
+    }
 
     return false;
+}
+
+function camFocusOnObject(obj) {
+    camera.x += (-obj.pos.x - camera.x) / 10;
+    camera.y += (-obj.pos.y - camera.y) / 10;
+    camera.z += (1 - camera.z) / 10;
 }
 
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     for (let i = 0; i < objects.length; i++) {
-
         let obj = objects[i];
         let relativeZ = obj.distance_from_cam * camera.z;
 
         let objX = setCoordsToCenter((obj.get_center().x + camera.x) / relativeZ, true);
         let objY = setCoordsToCenter((obj.get_center().y + camera.y) / relativeZ, false);
 
-
         if (mouse.clicked) {
             if (isCollideWithCursor(obj)) {
-                camera.x += 1;
-
+                objToFocus = obj;
+                clicked = false;
             }
         }
+
+        camFocusOnObject(objToFocus);
 
         let brightness = 1 < min_distance / relativeZ ? 1 : min_distance / relativeZ;
 
@@ -112,13 +120,15 @@ function main() {
     ];
 
     objects = [
-        new Obj(0, 0, 0, 256, 256, 1),
+        new Obj(0, 30, 200, 256, 256, 1.3),
+        new Obj(0, -200, 100, 256, 256, 0.9),
+        new Obj(0, 800, -100, 256, 256, 0.5),
     ];
 
     min_distance = objects[objects.length - 1].distance_from_cam;
+    objToFocus = objects[objects.length - 1];
 
     window.requestAnimationFrame(loop)
-
 }
 
 function loop() {
