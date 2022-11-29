@@ -22,7 +22,7 @@ body #zum h1 {
   text-shadow: 2vh 2vh black;
 }
 body div#main {
-  background-image: url(../img/background.jpg);
+  background-image: url(../img/background/bg1.png);
   width: 100%;
   height: 100vh;
   display: block;
