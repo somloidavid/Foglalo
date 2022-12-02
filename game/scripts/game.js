@@ -52,7 +52,9 @@ class Obj {
         let brightness = 1 <= min_distance / camera.focus_zoom / relativeZ ? 1 : min_distance / camera.focus_zoom / relativeZ;
 
         ctx.filter = 'brightness(' + brightness + ')';
-        ctx.drawImage(imgs[this.imgSrc], objX, objY, this.size.width / relativeZ, this.size.height / relativeZ);
+        if (relativeZ > 0.09) {
+            ctx.drawImage(imgs[this.imgSrc], objX, objY, this.size.width / relativeZ, this.size.height / relativeZ);
+        }
     }
 }
 
@@ -121,6 +123,7 @@ function main() {
     ];
 
     objects = [
+        new Obj(1, 30, 200, 92, 92, 120),
         new Obj(0, 30, 200, 92, 92, 1.9),
         new Obj(1, -200, 100, 128, 128, 1.2),
         new Obj(2, 300, 100, 256, 256, 0.7),
@@ -142,12 +145,9 @@ function loop() {
 
     for (let i = 0; i < objects.length; i++) {
         const obj = objects[i];
-        if (mouse.pressed) {
-            if (mouse.clickable) {
-                if (obj.isCollideWithCursor()) {
-                    objToFocus = i;
-                    mouse.clickable = false;
-                }
+        if (mouse.clickable) {
+            if (obj.isCollideWithCursor()) {
+                objToFocus = i;
             }
         }
 
@@ -155,22 +155,26 @@ function loop() {
         obj.render();
     }
 
-    for (let j = 0; j < hud_objs.length; j++) {
-        const obj = hud_objs[j];
+    for (let i = 0; i < hud_objs.length; i++) {
+        const obj = hud_objs[i];
 
-        if (mouse.pressed) {
-            if (mouse.clickable) {
-                if (obj.isCollideWithCursor(mouse)) {
-                    objToFocus = Math.abs(objToFocus + 1) % objects.length;
-                    mouse.clickable = false;
+        if (mouse.clickable) {
+            if (obj.isCollideWithCursor(mouse)) {
+                objToFocus = objToFocus + obj.dir;
+                if (objToFocus < 0) {
+                    objToFocus = 0;
+                }
+                else if (objToFocus > objects.length - 1) {
+                    objToFocus = objects.length - 1;
                 }
             }
-            mouse.clickable = false;
         }
 
         obj.render(ctx, hud_imgs);
     }
 
+
+    mouse.clickable = false;
     window.requestAnimationFrame(loop)
 }
 
