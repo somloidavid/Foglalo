@@ -1,5 +1,5 @@
 import { HudArrow } from './hud.js';
-
+import { Popup } from './questions.js';
 
 class Obj {
     constructor(index, x, y, width, height, dst_cam) {
@@ -173,7 +173,6 @@ function loop() {
 
     window.requestAnimationFrame(loop)
 }
-
 
 window.onload = main
 window.addEventListener("mousemove", function (event) {
