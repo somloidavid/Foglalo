@@ -2,12 +2,14 @@ import { HudArrow } from './hud.js';
 import { Popup } from './questions.js';
 
 class Obj {
-    constructor(index, x, y, width, height, dst_cam) {
+    constructor(index, x, y, width, height, dst_cam, rad) {
         this.imgSrc = index;
         this.pos = {
             x: x,
             y: y,
         }
+
+        this.rad = rad;
 
         this.size = {
             width: width,
@@ -31,9 +33,10 @@ class Obj {
 
         let relativeZ = this.distance_from_cam * camera.z;
 
-
-        if (Math.pow(mx - ((this.pos.x + camera.x) / relativeZ), 2) + Math.pow(my - ((this.pos.y + camera.y) / relativeZ), 2) <= Math.pow((this.size.width / 2) / relativeZ, 2)) {
-            return true;
+        if (relativeZ >= 0.09) {
+            if (Math.pow(mx - ((this.pos.x + camera.x) / relativeZ), 2) + Math.pow(my - ((this.pos.y + camera.y) / relativeZ), 2) <= Math.pow((this.rad) / relativeZ, 2)) {
+                return true;
+            }
         }
 
         return false;
@@ -123,10 +126,11 @@ function main() {
     ];
 
     objects = [
-        new Obj(1, 30, 200, 92, 92, 120),
-        new Obj(0, 30, 200, 92, 92, 1.9),
-        new Obj(1, -200, 100, 128, 128, 1.2),
-        new Obj(2, 300, 100, 256, 256, 0.7),
+        new Obj(1, 30, -200, 92, 92, 35, 92 / 2),
+        new Obj(0, 30, 200, 92, 92, 12, 92 / 2),
+        new Obj(1, -200, 100, 128, 128, 7, 128 / 2),
+        new Obj(2, 300, 100, 256, 256, 1, 124 / 2),
+        new Obj(2, -300, 100, 256, 256, 0.3, 124 / 2),
     ];
 
     hud_objs = [
@@ -134,7 +138,7 @@ function main() {
         new HudArrow(1, window.innerWidth - 32 * 2, window.innerHeight / 2 - 32, 32, 64),
     ];
 
-    min_distance = objects[objects.length - 1].distance_from_cam;
+    min_distance = 1;
     objToFocus = objects.length - 1;
 
     window.requestAnimationFrame(loop)
@@ -157,10 +161,9 @@ function loop() {
 
     for (let i = 0; i < hud_objs.length; i++) {
         const obj = hud_objs[i];
-
         if (mouse.clickable) {
             if (obj.isCollideWithCursor(mouse)) {
-                objToFocus = objToFocus + obj.dir;
+                objToFocus += obj.dir;
                 if (objToFocus < 0) {
                     objToFocus = 0;
                 }
