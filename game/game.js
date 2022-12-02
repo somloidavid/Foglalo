@@ -24,7 +24,7 @@ function inspect(a){
         elso.classList.remove("highlighted")
         harmadik.classList.remove("highlighted")
         negyedik.classList.remove("highlighted")        
-        lore.innerHTML = "Gémes Norbert a Téti maffia vezetője ,mindennapjaiban tehetséges vezetője a Tét VÁROS(nem falu)beli illegális üzleti életnek, valamint kegyetlenül írtja az <a href='https://cdn.discordapp.com/attachments/938790196147781642/966386047061745714/IMG_4399.png' target='_blank'>oppokat</a>"
+        lore.innerHTML = "Gémes Norbert a Téti maffia vezetője ,mindennapjaiban tehetséges vezetője a Tét VÁROS(nem falu)beli illegális üzleti életnek, valamint kegyetlenül írtja az <a href='https://cdn.discordapp.com/attachments/938790196147781642/966386047061745714/IMG_4399.png' target='_blank'>oppokat</a>.Casanova ugymond "
         stat.innerText = "mi"
         nev.innerText = "Gémes Norbrt"
         titulus.innerText = "Andrew Tét másnéven a Téti maffia feje"
@@ -33,13 +33,21 @@ function inspect(a){
         harmadik.classList.add("highlighted")
         masodik.classList.remove("highlighted")
         elso.classList.remove("highlighted")
-        negyedik.classList.remove("highlighted")        
+        negyedik.classList.remove("highlighted")           
+        lore.innerHTML = "Herby mostani nevén Dely Péter előző életében híres énekes Lil Peep, egy nagyon(xsdxdxd) híres videoblogger amolyan vlogger. napi 32db 1 perces videojat 1000 viewbot követi figyelemmel a 100 000 feliratkozójából. de legalább a cigarettája közepes méretű"
+        stat.innerText = "ja"
+        nev.innerText = "Herby, Előző életében Lil Peep"
+        titulus.innerText = "Sámsoni legenda"
      }
      if(a == 4){
         negyedik.classList.add("highlighted")
         masodik.classList.remove("highlighted")
         harmadik.classList.remove("highlighted")
-        elso.classList.remove("highlighted")        
+        elso.classList.remove("highlighted")           
+        lore.innerHTML = "Kenya Waste igazabol. Miután megcsalták, átverték mély Keresztény lett és ugy gondolta hogy ideje a villian arcnak ezert a kisebbféle zsidóellenességből oda jutott hogy elismerje Hitler jó emberi értékeit, jó keresztényként tartsa számon "
+        stat.innerText = "igen"
+        nev.innerText = "Kanye West"
+        titulus.innerText = "Cancelled mellet az illusztráció konkrétan"        
      }
 
 }
