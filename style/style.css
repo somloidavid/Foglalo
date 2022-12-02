@@ -6,6 +6,13 @@
 body {
   overflow-y: hidden;
 }
+@font-face {
+  body {
+    font-family: "PixelFont";
+    src: url(../font/alterebro-pixel-font.ttf) format("truetype");
+    font-family: PixelFont;
+  }
+}
 body #zum {
   position: absolute;
   display: none;
@@ -26,6 +33,8 @@ body div#main {
   width: 100%;
   height: 100vh;
   display: block;
+  overflow: auto;
+  font-family: "PixelFont";
 }
 body div#main p {
   color: white;
@@ -52,4 +61,73 @@ body div#main .button p a {
   z-index: 1;
   width: 100%;
   height: 100%;
+}
+body div#main div#popup {
+  background-color: red;
+  width: 55%;
+  height: 50vh;
+  margin: 10% auto;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.85s;
+}
+body div#main div#popup .headline {
+  height: 6vh;
+}
+body div#main div#popup .headline h1 {
+  text-align: center;
+  width: 80%;
+  margin-left: 10%;
+  height: 6vh;
+  font-size: 64px;
+}
+body div#main div#popup .headline #timer {
+  background-color: black;
+  height: 6vh;
+  width: 14%;
+  float: right;
+}
+body div#main div#popup div#answer {
+  position: absolute;
+  top: 28.7vh;
+  width: 55%;
+  height: 40vh;
+}
+body div#main div#popup div#answer div.choice {
+  background-color: white;
+  margin-bottom: 4vh;
+  margin-left: 5%;
+  width: 60%;
+  height: 9vh;
+}
+body div#main div#popup div#answer div.choice p {
+  color: black;
+  font-size: 3vh;
+  text-align: center;
+}
+body div#main div#popup img {
+  height: 35vh;
+  float: right;
+  margin: 5vh;
+}
+body div#main #notif {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.85s;
+  width: 55%;
+  height: 30vh;
+  top: 35vh;
+  left: 25%;
+  background-color: red;
+  position: absolute;
+}
+body div#main #notif div {
+  margin: 0vh auto;
+  height: 6vh;
+  top: 10vh;
+  position: relative;
+}
+body div#main #notif div p {
+  font-size: 6vh;
+}/*# sourceMappingURL=style.css.map */
 }/*# sourceMappingURL=style.css.map */

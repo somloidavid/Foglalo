@@ -1,18 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <link rel="stylesheet" href="../style/style.css">
+    <link rel="shortcut icon" href="../img/concept.png" type="image/x-icon">
     <title>Ohio</title>
 </head>
+
 <body>
     <div id="zum">
         <h1>Légyszi NE >:(</h1>
     </div>
 
     <div id="main">
+        <div id="popup">
+            <div class="headline">
+                <div id="timer">
+                    <p>10</p>
+                </div>
+                <h1 id="question">Ki Kriszhadvice?</h1>
+            </div>
+            <div id="answer">
+                <div class="choice" id="ch1" onclick="Answer(this);">
+                    <p>Tanács Krisztián</p>
+                </div>
+                <div class="choice" id="ch2" onclick="Answer(this);">
+                    <p>A prediction-ök démonja</p>
+                </div>
+                <div class="choice" id="ch3" onclick="Answer(this);">
+                    <p>A Béke Szigetének őrzője</p>
+                </div>
+            </div>
+            <img src="../img/Kriszh.jpg" alt="Forró a pite🔥">
+        </div>
+        
+        <div id="notif">
+            <div>
+                <p>Lejárt az idő!</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="../start.js"></script>
+    <script src="game.js"></script>
+</body>
+
+</html>
         <canvas id="main-canvas"></canvas>
     </div>
 

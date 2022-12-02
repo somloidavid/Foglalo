@@ -5,6 +5,11 @@
 
 body {
     overflow-y: hidden;
+    @font-face {
+        font-family: 'PixelFont';
+        src: url(../font/alterebro-pixel-font.ttf) format("truetype");
+        font-family: PixelFont;
+    }
 
 
     #zum {
@@ -30,6 +35,9 @@ body {
         width: 100%;
         height: 100vh;
         display: block;
+        overflow: auto;
+        font-family: 'PixelFont';
+
 
         p{
             color: white;
@@ -49,7 +57,7 @@ body {
                 text-align: center;
                 width: 100%;
                 height: 100%;
-
+                
                 a {
                     display: inline-block;
                     color: white;
@@ -60,5 +68,85 @@ body {
                 }
             }
         }
+
+        div#popup{
+            background-color: red;
+            width: 55%;
+            height: 50vh;
+            margin: 10% auto;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.85s;
+
+            .headline{
+                height: 6vh;
+
+                h1{
+                    text-align: center;
+                    width: 80%;
+                    margin-left: 10%;
+                    height: 6vh;
+                    font-size: 64px;
+                }
+    
+                #timer{
+                    background-color: black;
+                    height: 6vh;
+                    width: 14%;
+                    float: right;
+                }
+            }
+
+            div#answer{
+                position: absolute;
+                top: 28.7vh;
+                width: 55%;
+                height: 40vh;
+
+                div.choice{
+                    background-color: white;
+                    margin-bottom: 4vh;
+                    margin-left: 5%;
+                    width: 60%;
+                    height: 9vh;
+                    
+                    p{
+                        color: black;
+                        font-size: 3vh;
+                        text-align: center;
+                    }
+                }
+
+            }
+            img{
+                height: 35vh;
+                float: right;
+                margin: 5vh ;
+            }
+        }
+
+        #notif{
+            visibility: hidden;
+            opacity:  0;
+            transition: opacity 0.85s;
+            width:  55%;
+            height: 30vh;
+            top: 35vh;
+            left: 25%;
+            background-color: red;
+            position: absolute;
+            
+            div{
+                margin: 0vh auto;
+                height: 6vh;
+                top:  10vh;
+                position: relative;
+
+                p{
+                    font-size:  6vh;
+                }
+            }
+        }
     }
+
 }
