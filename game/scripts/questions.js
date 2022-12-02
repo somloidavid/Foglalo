@@ -29,18 +29,18 @@ function Popup() {
     ch2.innerHTML = `<p>${randq[0].answers.splice(Math.random() * randq[0].answers.length, 1)}</p>`;
     ch3.innerHTML = `<p>${randq[0].answers.splice(Math.random() * randq[0].answers.length, 1)}</p>`;
 
-    // let timer = document.getElementById("timer");
-    // let interval = setInterval(() => {
-    //     timer.innerHTML = `<p>${parseInt(timer.innerText) - 1}</p>`;
-    //     console.log(interval)
-    //     if (timer.innerText <= 0) {
-    //         clearInterval(interval);
-    //         OffTimer();
-    //     }
-    //     else if (answered) {
-    //         clearInterval(interval);
-    //     }
-    // }, 1000);
+    let timer = document.getElementById("timer");
+    let interval = setInterval(() => {
+        timer.innerHTML = `<p>${parseInt(timer.innerText) - 1}</p>`;
+        console.log(interval)
+        if (timer.innerText <= 0) {
+            clearInterval(interval);
+            OffTimer();
+        }
+        else if (answered) {
+            clearInterval(interval);
+        }
+    }, 1000);
 }
 
 function OffTimer() {

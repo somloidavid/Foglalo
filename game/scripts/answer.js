@@ -13,5 +13,6 @@ function Answer(a) {
                 document.getElementById(a.id).style.backgroundColor = "rgb(255,0,0)";
             }, 1000);
         }
+        // setTimeout(() => {}, 3000);
     }
 }
