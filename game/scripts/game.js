@@ -43,7 +43,7 @@ let mouse = {
     x: 0,
     y: 0,
     down: false,
-    clickable: false,
+    clickable: true,
 }
 
 let min_distance = undefined;
@@ -100,7 +100,6 @@ function main() {
     canvas = document.getElementById("main-canvas");
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    mouse.clickable = false;
 
     ctx = canvas.getContext("2d");
     ctx.imageSmoothingEnabled = false;
