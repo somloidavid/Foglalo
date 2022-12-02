@@ -81,7 +81,9 @@ body div#main div.container div#popup {
   align-items: center;
 }
 body div#main div.container div#popup .headline {
-  height: 14vh;
+  height: 30vh;
+  width: 100%;
+  display: block;
 }
 body div#main div.container div#popup .headline h1 {
   text-align: center;
@@ -99,7 +101,7 @@ body div#main div.container div#popup .headline #timer {
 body div#main div.container div#popup div.content {
   width: 100%;
   height: 70%;
-  display: flex;
+  display: block;
   flex-direction: row;
 }
 body div#main div.container div#popup div.content div#answer {
@@ -121,24 +123,28 @@ body div#main div.container div#popup div.content div#answer div.choice p {
 }
 body div#main div.container div#popup div.content img {
   height: 35vh;
+  display: block;
+  position: absolute;
+  top: 15vh;
+  left: 73.5%;
 }
-body div#main div.container #notif {
+body div#main #notif {
   display: none;
   opacity: 0;
   transition: opacity 0.85s;
   width: 55%;
   height: 30vh;
   top: 35vh;
-  left: 25%;
+  left: 22.5%;
   background-color: red;
   position: absolute;
 }
-body div#main div.container #notif div {
+body div#main #notif div {
   margin: 0vh auto;
   height: 6vh;
   top: 10vh;
   position: relative;
 }
-body div#main div.container #notif div p {
+body div#main #notif div p {
   font-size: 6vh;
 }/*# sourceMappingURL=style.css.map */
