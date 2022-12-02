@@ -7,6 +7,7 @@
 <h1> Feladat Kiosztás</h1>
 <ul>
     <li>Ráközelítés Effekt A Bolygókra Kattintásnál(Információk a bolygóról) - Ádám</li>
+    <li>Canvas render + perspektiv camera mozgas kozelitessel- Adam </li>
     <li>Quiz Kérdések Felugró Ablaka - Dávid</li>
     <li>Logo tervezés - Bence</li>
     <li>HUD(Pontozás, HP, Játékos számára fontos információk kiírása) - Bence</li>
