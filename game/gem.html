@@ -16,27 +16,33 @@
     </div>
 
     <div id="main">
-        <div id="popup">
-            <div class="headline">
-                <div id="timer">
-                    <p>10</p>
+        <canvas id="main-canvas"></canvas>
+        <div class="container">
+            <div id="popup">
+                <div class="headline">
+                    <div id="timer">
+                        <p>10</p>
+                    </div>
+                    <h1 id="question">Ki Kriszhadvice?</h1>
                 </div>
-                <h1 id="question">Ki Kriszhadvice?</h1>
+                <div class="content">
+                    <div id="answer">
+                        <div class="choice" id="ch1" onclick="Answer(this)">
+                            <p>Tanács Krisztián</p>
+                        </div>
+                        <div class="choice" id="ch2" onclick="Answer(this)">
+                            <p>A prediction-ök démonja</p>
+                        </div>
+                        <div class="choice" id="ch3" onclick="Answer(this)">
+                            <p>A Béke Szigetének őrzője</p>
+                        </div>
+                    </div>
+                    <img src="../img/Kriszh.jpg" alt="Forró a pite🔥">
+                </div>
+
             </div>
-            <div id="answer">
-                <div class="choice" id="ch1" onclick="Answer(this);">
-                    <p>Tanács Krisztián</p>
-                </div>
-                <div class="choice" id="ch2" onclick="Answer(this);">
-                    <p>A prediction-ök démonja</p>
-                </div>
-                <div class="choice" id="ch3" onclick="Answer(this);">
-                    <p>A Béke Szigetének őrzője</p>
-                </div>
-            </div>
-            <img src="../img/Kriszh.jpg" alt="Forró a pite🔥">
         </div>
-        
+
         <div id="notif">
             <div>
                 <p>Lejárt az idő!</p>
@@ -45,14 +51,6 @@
     </div>
 
     <script src="../start.js"></script>
-    <script src="game.js"></script>
+    <script src="./scripts/game.js" type='module'></script>
+    <script src="./scripts/answer.js"></script>
 </body>
-
-</html>
-        <canvas id="main-canvas"></canvas>
-    </div>
-
-    <script src="game.js"></script>
-    <!-- <script src="../start.js"></script> -->
-</body>
-</html>
