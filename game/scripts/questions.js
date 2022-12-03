@@ -1,3 +1,5 @@
+import { answered } from "./answer.js";
+
 class Question {
     constructor(q) {
         this.question = q[0];
@@ -17,6 +19,7 @@ input.forEach(q => {
 let randq;
 
 function Popup() {
+    let QuizInForeground = true;
     document.getElementById("popup").style.display = "flex";
     document.getElementById("popup").style.opacity = "1";
     randq = questions.splice(Math.floor(Math.random() * questions.length), 1);
@@ -50,5 +53,5 @@ function OffTimer() {
     document.getElementById("popup").style.display = "none";
 }
 
-export { Popup };
+export { Popup, randq , QuizInForeground};
 

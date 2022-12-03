@@ -1,4 +1,4 @@
-import { Popup } from './questions.js';
+import { Popup, QuizInForeground } from './questions.js';
 
 class Obj {
     constructor(index, x, y, width, height, dst_cam) {
@@ -128,12 +128,13 @@ function loop() {
 
     for (let i = 0; i < objects.length; i++) {
         const obj = objects[i];
-        if (mouse.clickable) {
+        if (mouse.clickable && !QuizInForeground) {
             if (mouse.down) {
                 if (isCollideWithCursor(obj)) {
                     objToFocus = obj;
                     Popup();
                     mouse.clickable = false;
+                    QuizInForeground = true;
                 }
             }
         }
