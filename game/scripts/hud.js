@@ -1,3 +1,5 @@
+const planetInfoDiv = document.getElementById("planet_info");
+
 class HudArrow {
     constructor(index, x, y, width, height) {
         this.index = index;
@@ -31,5 +33,7 @@ class HudArrow {
         return this.y + this.height/2 - coord;
     }
 }
+
+
 
 export { HudArrow };
