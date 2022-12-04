@@ -17,6 +17,7 @@ class Obj {
         }
 
         this.distance_from_cam = dst_cam;
+        this.relativeZ = dst_cam;
     }
 
     get_center() {
@@ -30,13 +31,8 @@ class Obj {
         let mx = mouse.x - window.innerWidth / 2;
         let my = mouse.y - window.innerHeight / 2;
 
-
-        let relativeZ = this.distance_from_cam * camera.z;
-
-        if (relativeZ >= 0.09) {
-            if (Math.pow(mx - ((this.pos.x + camera.x) / relativeZ), 2) + Math.pow(my - ((this.pos.y + camera.y) / relativeZ), 2) <= Math.pow((this.rad) / relativeZ, 2)) {
-                return true;
-            }
+        if (Math.pow(mx - ((this.pos.x + camera.x) / this.relativeZ), 2) + Math.pow(my - ((this.pos.y + camera.y) / this.relativeZ), 2) <= Math.pow((this.rad) / this.relativeZ, 2)) {
+            return true;
         }
 
         return false;
@@ -47,17 +43,30 @@ class Obj {
         camera.y += (-this.pos.y - camera.y) / 20;
         camera.z += (1 / this.distance_from_cam / camera.focus_zoom - camera.z) / 20;
     }
-    render() {
-        let relativeZ = this.distance_from_cam * camera.z;
 
-        let objX = setCoordsToCenter((this.get_center().x + camera.x) / relativeZ, true);
-        let objY = setCoordsToCenter((this.get_center().y + camera.y) / relativeZ, false);
-        let brightness = 1 <= min_distance / camera.focus_zoom / relativeZ ? 1 : min_distance / camera.focus_zoom / relativeZ;
+    isRenderAble() {
+        if (setCoordsToCenter((this.pos.x + this.size.width + camera.x) / this.relativeZ, true) < 0 || 
+            setCoordsToCenter((this.pos.x + camera.x) / this.relativeZ, true) > window.innerWidth ||
+            setCoordsToCenter((this.pos.y + this.size.height + camera.y) / this.relativeZ, false) < 0 ||
+            setCoordsToCenter((this.pos.y + camera.y) / this.relativeZ, false) > window.innerHeight
+        )
+            return false;
+
+        if (this.relativeZ < 0.09 || this.relativeZ > 3000 ) {
+            return false;
+        }
+
+        return true;
+    }
+
+    render() {
+        let objX = setCoordsToCenter((this.get_center().x + camera.x) / this.relativeZ, true);
+        let objY = setCoordsToCenter((this.get_center().y + camera.y) / this.relativeZ, false);
+        let brightness = 1 <= min_distance / camera.focus_zoom / this.relativeZ ? 1 : min_distance / camera.focus_zoom / this.relativeZ;
 
         ctx.filter = 'brightness(' + brightness + ')';
-        if (relativeZ > 0.09) {
-            ctx.drawImage(imgs[this.imgSrc], objX, objY, this.size.width / relativeZ, this.size.height / relativeZ);
-        }
+        ctx.drawImage(imgs[this.imgSrc], objX, objY, this.size.width / this.relativeZ, this.size.height / this.relativeZ);
+
     }
 }
 
@@ -129,7 +138,7 @@ function main() {
         new Obj(1, 30, -200, 92, 92, 35, 92 / 2),
         new Obj(0, 30, 200, 92, 92, 12, 92 / 2),
         new Obj(1, -200, 100, 128, 128, 7, 128 / 2),
-        new Obj(2, 300, 100, 256, 256, 1, 124 / 2),
+        new Obj(2, window.innerWidth/2, window.innerHeight/2, 256, 256, 1, 124 / 2),
         new Obj(2, -300, 100, 256, 256, 0.3, 124 / 2),
     ];
 
@@ -149,6 +158,8 @@ function loop() {
 
     for (let i = 0; i < objects.length; i++) {
         const obj = objects[i];
+        obj.relativeZ = obj.distance_from_cam * camera.z;
+        if (!obj.isRenderAble()) continue;
         if (mouse.clickable) {
             if (obj.isCollideWithCursor()) {
                 objToFocus = i;
@@ -160,6 +171,7 @@ function loop() {
 
     for (let i = 0; i < hud_objs.length; i++) {
         const obj = hud_objs[i];
+
         if (mouse.clickable) {
             if (obj.isCollideWithCursor(mouse)) {
                 objToFocus += obj.dir;
