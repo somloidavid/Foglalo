@@ -70,7 +70,7 @@ body div#main p.kleiras {
   color: red;
   font-size: 30px;
 }
-body div#main p.statok {
+body div#main table.statok {
   margin: 0;
   padding: 0;
   width: 50%;
@@ -78,10 +78,26 @@ body div#main p.statok {
   color: blue;
   font-size: 30px;
 }
+body div#main tr {
+  color: blue;
+  margin-bottom: 30px;
+}
+body div#main td {
+  width: 10vw;
+}
 body div#main h1 {
   color: red;
   font-size: 15vh;
   text-align: center;
+}
+body div#main h1.selection {
+  color: red;
+  font-size: 120px;
+}
+body div#main div.gomb {
+  position: absolute;
+  top: 87%;
+  left: 45%;
 }
 body div#main p {
   color: white;
