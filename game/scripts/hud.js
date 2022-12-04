@@ -13,13 +13,22 @@ class HudArrow {
     }
 
     isCollideWithCursor(mouse) {
-        if (mouse.x >= this.x && mouse.x <= this.x + this.width) {
-            if (mouse.y >= this.y && mouse.y <= this.y + this.height) {
+        if (this.relX(mouse.x) >= 0 && this.relX(mouse.x) <= this.width) {
+            if (this.relY(mouse.y) == 0)
                 return true;
-            }
+
+            return Math.abs( this.width * this.index - this.relX(mouse.x) ) / Math.abs(this.relY(mouse.y)) >= 1;
         }
 
         return false;
+    }
+
+    relX(coord) {
+        return this.x + this.width - coord;
+    }
+
+    relY(coord) {
+        return this.y + this.height/2 - coord;
     }
 }
 

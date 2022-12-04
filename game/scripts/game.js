@@ -121,8 +121,8 @@ function main() {
     ];
 
     hud_imgs = [
-        createNewImg("../img/hud/left_arrow_select.png"),
         createNewImg("../img/hud/right_arrow_select.png"),
+        createNewImg("../img/hud/left_arrow_select.png"),
     ];
 
     objects = [
@@ -134,8 +134,8 @@ function main() {
     ];
 
     hud_objs = [
-        new HudArrow(0, 32, window.innerHeight / 2 - 32, 32, 64),
-        new HudArrow(1, window.innerWidth - 32 * 2, window.innerHeight / 2 - 32, 32, 64),
+        new HudArrow(1, 32, window.innerHeight / 2 - 32, 32, 64),
+        new HudArrow(0, window.innerWidth - 32 * 2, window.innerHeight / 2 - 32, 32, 64),
     ];
 
     min_distance = 1;
@@ -155,7 +155,6 @@ function loop() {
             }
         }
 
-        objects[objToFocus].camFocus();
         obj.render();
     }
 
@@ -177,22 +176,22 @@ function loop() {
     }
 
 
+    objects[objToFocus].camFocus();
     mouse.clickable = false;
     window.requestAnimationFrame(loop)
 }
 
 window.onload = main
-window.addEventListener("mousemove", function (event) {
+window.onmousemove = function (event) {
     mouse.x = event.clientX;
     mouse.y = event.clientY;
-});
+};
 
-
-window.addEventListener("mousedown", function (event) {
+window.onmousedown = function (event) {
     mouse.pressed = true;
-});
+};
 
-window.addEventListener("mouseup", function (event) {
+window.onmouseup = function (event) {
     mouse.clickable = true;
     mouse.pressed = false;
-});
+};
