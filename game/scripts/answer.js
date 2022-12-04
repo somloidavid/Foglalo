@@ -19,7 +19,6 @@ function Answer(a) {
         setTimeout(() => {
             document.getElementById("popup").style.display = "none";
             element.style.border = "none";
-            timer.innerText = "10";
             element.style.backgroundColor = "#fff";
             ModifyQuizInForeground(false);
         }, 3000);

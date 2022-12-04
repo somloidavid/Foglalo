@@ -23,7 +23,7 @@ function ModifyQuizInForeground(q){
 
 function Popup() {
     let timer = document.getElementById("timer");
-    timer.innerText = "3";
+    timer.innerText = "11";
     QuizInForeground = true;
     document.getElementById("popup").style.display = "flex";
     document.getElementById("popup").style.opacity = "1";
