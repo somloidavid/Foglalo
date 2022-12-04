@@ -1,11 +1,10 @@
-import { answered } from "./answer.js";
+import { answered, Answer } from "./answer.js";
 
 class Question {
     constructor(q) {
         this.question = q[0];
         this.correct = q[1];
         this.answers = [q[1], q[2], q[3]];
-        // console.log(this.answers)
     }
 }
 
@@ -17,9 +16,15 @@ input.forEach(q => {
 });
 
 let randq;
+let QuizInForeground;
+function ModifyQuizInForeground(q){
+    QuizInForeground = q;
+}
 
 function Popup() {
-    let QuizInForeground = true;
+    let timer = document.getElementById("timer");
+    timer.innerText = "3";
+    QuizInForeground = true;
     document.getElementById("popup").style.display = "flex";
     document.getElementById("popup").style.opacity = "1";
     randq = questions.splice(Math.floor(Math.random() * questions.length), 1);
@@ -32,7 +37,10 @@ function Popup() {
     ch2.innerHTML = `<p>${randq[0].answers.splice(Math.random() * randq[0].answers.length, 1)}</p>`;
     ch3.innerHTML = `<p>${randq[0].answers.splice(Math.random() * randq[0].answers.length, 1)}</p>`;
 
-    let timer = document.getElementById("timer");
+    document.getElementById("ch1").addEventListener("click", function(){Answer("ch1")});
+    document.getElementById("ch2").addEventListener("click", function(){Answer("ch2")});
+    document.getElementById("ch3").addEventListener("click", function(){Answer("ch3")});
+
     let interval = setInterval(() => {
         timer.innerHTML = `<p>${parseInt(timer.innerText) - 1}</p>`;
         console.log(interval)
@@ -51,7 +59,10 @@ function OffTimer() {
     notif.style.display = "block";
     notif.style.opacity = "1";
     document.getElementById("popup").style.display = "none";
+    setTimeout(() => {
+        notif.style.display = "none";
+        ModifyQuizInForeground(false);
+    }, 3000);
 }
 
-export { Popup, randq , QuizInForeground};
-
+export { Popup, randq, QuizInForeground, ModifyQuizInForeground};
