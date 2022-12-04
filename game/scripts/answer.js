@@ -21,6 +21,7 @@ function Answer(a) {
             element.style.border = "none";
             element.style.backgroundColor = "#fff";
             ModifyQuizInForeground(false);
+            answered = false;
         }, 3000);
     }
 }
