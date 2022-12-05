@@ -36,9 +36,6 @@ body div#main {
   overflow: auto;
   font-family: "PixelFont";
 }
-body div#main canvas {
-  display: none;
-}
 body div#main div.leiras {
   height: 70vh;
   width: 60vw;
