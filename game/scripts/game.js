@@ -5,7 +5,7 @@ import { selected } from './select.js';
 
 
 class Obj {
-    constructor(index, x, y, width, height, dst_cam, rad) {
+    constructor(index, x, y, width, height, dst_cam, rad, info) {
         this.imgSrc = index;
         this.pos = {
             x: x,
@@ -21,6 +21,10 @@ class Obj {
 
         this.distance_from_cam = dst_cam;
         this.relativeZ = dst_cam;
+        this.planetInfo = "";
+        for (let i = 0; i < info.length; i++) {
+            this.planetInfo += '<p>' + info[i] + '</p>';
+        }
     }
 
     get_center() {
@@ -42,9 +46,17 @@ class Obj {
     }
 
     camFocus() {
-        camera.x += (-this.pos.x - camera.x) / 20;
+        camera.x += (-this.pos.x - 150 - camera.x) / 20;
         camera.y += (-this.pos.y - camera.y) / 20;
         camera.z += (1 / this.distance_from_cam / camera.focus_zoom - camera.z) / 20;
+
+        if (Math.abs(-this.pos.x - 150 - camera.x - this.pos.y - camera.y) < 100) {
+            planetInfo.style.opacity = "100%";
+            return true;            
+        }
+        displayInfo.displayed = false;
+        planetInfo.style.opacity = "0%";
+        return false;
     }
 
     isRenderAble() {
@@ -55,7 +67,7 @@ class Obj {
         )
             return false;
 
-        if (this.relativeZ < 0.09 || this.relativeZ > 3000 ) {
+        if (this.relativeZ < 0.09 || min_distance / camera.focus_zoom / this.relativeZ < 0.01 ) {
             return false;
         }
 
@@ -69,7 +81,6 @@ class Obj {
 
         ctx.filter = 'brightness(' + brightness + ')';
         ctx.drawImage(imgs[this.imgSrc], objX, objY, this.size.width / this.relativeZ, this.size.height / this.relativeZ);
-
     }
 }
 
@@ -82,6 +93,10 @@ let objects;
 let objToFocus;
 
 let hud_objs;
+let displayInfo = {
+    info: "",
+    displayed: false,
+}
 
 let camera = {
     x: 0,
@@ -97,6 +112,8 @@ let mouse = {
     pressed: false,
     clickable: true,
 }
+
+const planetInfo = document.getElementById("planet_info");
 
 let min_distance = undefined;
 
@@ -138,11 +155,11 @@ function main() {
     ];
 
     objects = [
-        new Obj(1, 30, -200, 92, 92, 35, 92 / 2),
-        new Obj(0, 30, 200, 92, 92, 12, 92 / 2),
-        new Obj(1, -200, 100, 128, 128, 7, 128 / 2),
-        new Obj(2, window.innerWidth/2, window.innerHeight/2, 256, 256, 1, 124 / 2),
-        new Obj(2, -300, 100, 256, 256, 0.3, 124 / 2),
+        new Obj(1, 30, -200, 92, 92, 200, 92 / 2, ["IDE MAR NINCS OTLETEM"]),
+        new Obj(0, 30, 200, 256, 256, 25, 256 / 2, ["haha: HE"]),
+        new Obj(1, -200, 100, 128, 128, 7, 128 / 2, ["Kriszthadvice: false"]),
+        new Obj(2, window.innerWidth/2, window.innerHeight/2, 256, 256, 1, 124 / 2, ["population: 2", "Norb on planet: 0"]),
+        new Obj(2, -300, 100, 256, 256, 0.1, 124 / 2, ["francboojg: ez itt"]),
     ];
 
     hud_objs = [
@@ -156,6 +173,8 @@ function main() {
     window.requestAnimationFrame(loop);
 }
 
+
+let frames = 0;
 function loop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -175,7 +194,6 @@ function loop() {
                 Popup()
             }
         }
-
         obj.render();
     }
 
@@ -197,9 +215,17 @@ function loop() {
 
         obj.render(ctx, hud_imgs);
     }
+    
 
-
-    objects[objToFocus].camFocus();
+    let obj = objects[objToFocus];
+    obj.camFocus();
+    if (!displayInfo.displayed) {
+        displayInfo.displayed = true;
+        planetInfo.innerHTML = obj.planetInfo;
+    }
+    else {
+        planetInfo.style.left = `${setCoordsToCenter((obj.pos.x + obj.rad + camera.x) / obj.relativeZ, true) + 100}px`
+    }
     mouse.clickable = false;
     window.requestAnimationFrame(loop)
 }
