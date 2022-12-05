@@ -6,17 +6,24 @@
 body {
     overflow-y: hidden;
 
+    @font-face {
+        font-family: 'PixelFont';
+        src: url(../font/alterebro-pixel-font.ttf) format("truetype");
+        font-family: PixelFont;
+    }
+
+
     #zum {
         position: absolute;
         display: none;
         width: 100%;
         height: 100vh;
-        background-image: url(../img/zoomError.jfif);    
+        background-image: url(../img/zoomError.jfif);
         background-repeat: no-repeat;
         background-size: cover;
-        
-        h1{
-            font-size: 20vh ;
+
+        h1 {
+            font-size: 20vh;
             text-align: center;
             color: red;
             text-shadow: 2vh 2vh black;
@@ -24,11 +31,13 @@ body {
     }
 
 
-    div#main{
+    div#main {
         background-image: url(../img/background.jpg);
         width: 100%;
         height: 100vh;
         display: block;
+        overflow: auto;
+        font-family: 'PixelFont';
 
         div.leiras{
             height: 70vh;
@@ -164,14 +173,14 @@ body {
         }
 
 
-        .button{
+        .button {
             background-color: red;
             width: 40%;
             margin: auto;
             height: 3vh;
             margin-bottom: 1.5vh;
 
-            p{
+            p {
                 font-size: 2vh;
                 text-align: center;
                 width: 100%;
@@ -187,5 +196,109 @@ body {
                 }
             }
         }
+
+        div.container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            div#popup {
+                position: absolute;
+                top: 25%;
+                background-color: red;
+                width: 55%;
+                height: 50vh;
+                display: flex;
+                opacity: 0;
+                transition: opacity 0.85s;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                .headline {
+                    height: 30vh;
+                    width: 100%;
+                    display: block;
+
+                    h1 {
+                        text-align: center;
+                        width: 80%;
+                        margin-left: 10%;
+                        height: 6vh;
+                        font-size: 40px;
+                    }
+
+                    #timer {
+                        background-color: black;
+                        height: 6vh;
+                        width: 14%;
+                        float: right;
+                    }
+                }
+
+                div.content {
+                    width: 100%;
+                    height: 70%;
+                    display: block;
+                    flex-direction: row;
+
+                    div#answer {
+                        top: 28.7vh;
+                        width: 55%;
+                        height: 40vh;
+
+                        div.choice {
+                            background-color: white;
+                            margin-bottom: 4vh;
+                            margin-left: 5%;
+                            width: 60%;
+                            height: 9vh;
+
+                            p {
+                                color: black;
+                                font-size: 3vh;
+                                text-align: center;
+                            }
+                        }
+
+                    }
+
+                    img {
+                        height: 35vh;
+                        display: block;
+                        position: absolute;
+                        top: 15vh;
+                        left: 73.5%;
+                    }
+                }
+            }
+
+        }
+
+        #notif {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.85s;
+            width: 55%;
+            height: 30vh;
+            top: 35vh;
+            left: 22.5%;
+            background-color: red;
+            position: absolute;
+    
+            div {
+                margin: 0vh auto;
+                height: 6vh;
+                top: 10vh;
+                position: relative;
+    
+                p {
+                    font-size: 6vh;
+                }
+            }
+        }
+
     }
+
+
 }

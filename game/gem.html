@@ -1,20 +1,24 @@
 <!DOCTYPE html>
-<html lang="hu">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <link rel="stylesheet" href="../style/style.css">
+    <link rel="shortcut icon" href="../img/concept.png" type="image/x-icon">
     <title>Ohio</title>
 </head>
+
 <body>
     <div id="zum">
         <h1>Légyszi NE >:(</h1>
     </div>
 
     <div id="main">
+        <div class="hide">
         <p>Choose your character</p>
-            <div class="flexcontainer">
+        <div class="flexcontainer">
                 <div class="keptarto">
                     <img src="../img/Sanyi.png" alt="Mi Hazánk!" class="character" id="elso" onclick="inspect(1)">
                 </div>
@@ -54,7 +58,44 @@
             <div class="gomb" >
                 <h1 class="selection" id="gob" onclick="select()">Select</h1>
             </div>
-    <script src="game.js"></script>
+        </div>
+        <canvas id="main-canvas"></canvas>
+        <div class="container">
+            <div id="popup">
+                <div class="headline">
+                    <div id="timer">
+                        <p>10</p>
+                    </div>
+                    <h1 id="question">Ki Kriszhadvice?</h1>
+                </div>
+                <div class="content">
+                    <div id="answer">
+                        <div class="choice" id="ch1"">
+                            <p>Tanács Krisztián</p>
+                        </div>
+                        <div class="choice" id="ch2"">
+                            <p>A prediction-ök démonja</p>
+                        </div>
+                        <div class="choice" id="ch3"">
+                            <p>A Béke Szigetének őrzője</p>
+                        </div>
+                    </div>
+                    <img src="../img/Kriszh.jpg" alt="Forró a pite🔥">
+                </div>
+            </div>
+        </div>
+
+        <div id="notif">
+            <div>
+                <p>Lejárt az idő!</p>
+            </div>
+        </div>
+    </div>
+
     <script src="../start.js"></script>
+    <script src="./scripts/game.js" type='module'></script>
+    <script src="./scripts/answer.js" type="module"></script>
 </body>
+
+
 </html>
