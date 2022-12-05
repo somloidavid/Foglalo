@@ -16,6 +16,49 @@
     </div>
 
     <div id="main">
+        <div id="hide">
+        <p>Choose your character</p>
+        <div class="flexcontainer">
+                <div class="keptarto">
+                    <img src="../img/Sanyi.png" alt="Mi Hazánk!" class="character" id="elso">
+                </div>
+                <div class="keptarto">
+                    <img src="../img/gemesnorbert.png" alt="Mi Hazánk!" class="character" id="masodik">
+                </div>     
+                <div class="keptarto-jobb">
+                    <img src="../img/raketa.png" alt="Mi Hazánk!" class="character" id="harmadik">
+                </div>
+                <div class="keptarto-jobb">
+                    <img src="../img/akcmisi.jfif" alt="Mi Hazánk!" class="character" id="negyedik">
+                </div>
+            <div class="leiras">
+                  <h1 class="karakternev" id="nev"></h1>
+                  <h2 class="karaktertitle" id="titulus"></h2>
+                  <div class="leirasok">
+                    <p class="kleiras" id="lore">
+                        
+                    </p>
+                        <table class="statok" id="stat">
+                            <!-- <tr>
+                                <td>IQ</td>
+                                <td>10</td>
+                              </tr>
+                              <tr>
+                                <td>gyorsasag</td>
+                                <td>10</td>
+                              </tr> 
+                              <tr>
+                                <td>Special</td>
+                                <td>béniz</td>
+                              </tr> -->
+                        </table>
+                </div>
+            </div>
+            </div>
+            <div class="gomb" >
+                <h1 class="selection" id="gob">Select</h1>
+            </div>
+        </div>
         <canvas id="main-canvas"></canvas>
         <div class="container">
             <div id="popup">
@@ -27,19 +70,18 @@
                 </div>
                 <div class="content">
                     <div id="answer">
-                        <div class="choice" id="ch1" onclick="Answer(this)">
+                        <div class="choice" id="ch1"">
                             <p>Tanács Krisztián</p>
                         </div>
-                        <div class="choice" id="ch2" onclick="Answer(this)">
+                        <div class="choice" id="ch2"">
                             <p>A prediction-ök démonja</p>
                         </div>
-                        <div class="choice" id="ch3" onclick="Answer(this)">
+                        <div class="choice" id="ch3"">
                             <p>A Béke Szigetének őrzője</p>
                         </div>
                     </div>
                     <img src="../img/Kriszh.jpg" alt="Forró a pite🔥">
                 </div>
-
             </div>
         </div>
 
@@ -49,12 +91,15 @@
             </div>
         </div>
 
+
         <div id="planet_info">
         </div>
+
     </div>
-        
     <script src="../start.js"></script>
     <script src="./scripts/game.js" type='module'></script>
-    <script src="./scripts/answer.js"></script>
+    <script src="./scripts/answer.js" type="module"></script>
+    <script src="./scripts/select.js" type="module"></script>
 </body>
 
+</html>

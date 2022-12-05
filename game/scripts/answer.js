@@ -1,17 +1,29 @@
+import { randq, ModifyQuizInForeground} from "./questions.js";
+
 let answered = false;
 function Answer(a) {
     if (!answered) {
-        document.getElementById(a.id).style.border = "thick solid orange";
+        let element = document.getElementById(a);
+        element.style.border = "thick solid orange";
         answered = true;
-        if (a.innerHTML == `<p>${randq.correct}</p>`) {
+        if (element.innerHTML == `<p>${randq.correct}</p>`) {
             setTimeout(() => {
-                document.getElementById(a.id).style.backgroundColor = "rgb(0,255,0)";
+                element.style.backgroundColor = "rgb(0,255,0)";
             }, 1000);
         }
         else {
             setTimeout(() => {
-                document.getElementById(a.id).style.backgroundColor = "rgb(255,0,0)";
+                element.style.backgroundColor = "rgb(255,0,0)";
             }, 1000);
         }
+        setTimeout(() => {
+            document.getElementById("popup").style.display = "none";
+            element.style.border = "none";
+            element.style.backgroundColor = "#fff";
+            ModifyQuizInForeground(false);
+            answered = false;
+        }, 3000);
     }
 }
+
+export { answered, Answer };
