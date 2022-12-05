@@ -16,6 +16,49 @@
     </div>
 
     <div id="main">
+        <div class="hide">
+        <p>Choose your character</p>
+        <div class="flexcontainer">
+                <div class="keptarto">
+                    <img src="../img/Sanyi.png" alt="Mi Hazánk!" class="character" id="elso" onclick="inspect(1)">
+                </div>
+                <div class="keptarto">
+                    <img src="../img/gemesnorbert.png" alt="Mi Hazánk!" class="character" id="masodik" onclick="inspect(2)">
+                </div>     
+                <div class="keptarto-jobb">
+                    <img src="../img/raketa.png" alt="Mi Hazánk!" class="character" id="harmadik" onclick="inspect(3)">
+                </div>
+                <div class="keptarto-jobb">
+                    <img src="../img/akcmisi.jfif" alt="Mi Hazánk!" class="character" id="negyedik" onclick="inspect(4)">
+                </div>
+            <div class="leiras">
+                  <h1 class="karakternev" id="nev"></h1>
+                  <h2 class="karaktertitle" id="titulus"></h2>
+                  <div class="leirasok">
+                    <p class="kleiras" id="lore">
+                        
+                    </p>
+                        <table class="statok" id="stat">
+                            <!-- <tr>
+                                <td>IQ</td>
+                                <td>10</td>
+                              </tr>
+                              <tr>
+                                <td>gyorsasag</td>
+                                <td>10</td>
+                              </tr> 
+                              <tr>
+                                <td>Special</td>
+                                <td>béniz</td>
+                              </tr> -->
+                        </table>
+                </div>
+            </div>
+            </div>
+            <div class="gomb" >
+                <h1 class="selection" id="gob" onclick="select()">Select</h1>
+            </div>
+        </div>
         <canvas id="main-canvas"></canvas>
         <div class="container">
             <div id="popup">
