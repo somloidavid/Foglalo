@@ -43,6 +43,7 @@ body {
 
 
         div#planet_info {
+            display: none;
             transition: opacity 0.3s ease-out;
             background-image: url("../img/hud/info.png"); 
             position: absolute; 
@@ -52,6 +53,7 @@ body {
             font-size: 16px;
             top: calc(50% - 150px);
             padding: 0px;
+            z-index: 0;
 
             p {
                 font-family: 'VT323', monospace;
@@ -234,6 +236,7 @@ body {
             align-items: center;
 
             div#popup {
+                z-index: 1;
                 position: absolute;
                 top: 25%;
                 background-color: red;

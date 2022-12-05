@@ -37,8 +37,8 @@ body div#main {
   overflow: auto;
   font-family: "PixelFont";
 }
-
 body div#main div#planet_info {
+  display: none;
   transition: opacity 0.3s ease-out;
   background-image: url("../img/hud/info.png");
   position: absolute;
@@ -48,6 +48,7 @@ body div#main div#planet_info {
   font-size: 16px;
   top: calc(50% - 150px);
   padding: 0px;
+  z-index: 0;
 }
 body div#main div#planet_info p {
   font-family: "VT323", monospace;
@@ -56,7 +57,7 @@ body div#main div#planet_info p {
   margin: 0;
   padding: 0;
   margin-left: 20px;
-=======
+}
 body div#main canvas {
   display: none;
 }
@@ -134,7 +135,6 @@ body div#main div.gomb {
   position: absolute;
   top: 87%;
   left: 45%;
-
 }
 body div#main p {
   color: white;
@@ -207,6 +207,7 @@ body div#main div.container {
   align-items: center;
 }
 body div#main div.container div#popup {
+  z-index: 1;
   position: absolute;
   top: 25%;
   background-color: red;
