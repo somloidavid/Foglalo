@@ -39,6 +39,9 @@ body {
         overflow: auto;
         font-family: 'PixelFont';
 
+        canvas{
+            display: none;
+        }
 
         p {
             color: white;
