@@ -19,6 +19,7 @@ function inspect(a){
         stat.innerHTML = "<td>IQ</td><td>kevés</td></tr><tr><td>gyorsasag</td><td>kicsi</td></tr> <tr><td>Special</td><td title='Sanyi a Mi Hazánk Betyárseregét segítségül hívva a nagy bolygóknál mindig 2 vel kevesebb kérdéest kell eltalálnia '>Mi Hazánk</td></tr>"
         nev.innerText = "Sanyi"
         titulus.innerText = "Sándor Sanyi , barátoknak csak Sanyi"
+        karakter = a
       }
      if(a == 2){
         masodik.classList.add("highlighted")
@@ -29,6 +30,8 @@ function inspect(a){
         stat.innerHTML = "<td>IQ</td><td>???</td></tr><tr><td>gyorsasag</td><td>közepes</td></tr> <tr><td>Special</td><td Title='Andrew Tét úgy van vele hogy kilóra megvehet egy bolygót mert megteheti'>Teli Bag pénz</td></tr>"
         nev.innerText = "Gémes Norbrt"
         titulus.innerText = "Andrew Tét másnéven a Téti maffia feje"
+        karakter = a
+
      }
      if(a == 3){
         harmadik.classList.add("highlighted")
@@ -39,6 +42,8 @@ function inspect(a){
         stat.innerHTML = "<td>IQ</td><td>∞</td></tr><tr><td>gyorsasag</td><td>kisé lassú</td></tr> <tr><td>Special</td><td  title='Lil peep elrobbant neha egy közepest emiatt mindenttudóvá válik egy körre de a következő körben ki lesz ütve ami miatt nehezebb kérdést kap'>Közepes méretű</td></tr>"
         nev.innerText = "Herby, Előző életében Lil Peep"
         titulus.innerText = "Sámsoni legenda"
+        karakter = a
+
      }
      if(a == 4){
         negyedik.classList.add("highlighted")
@@ -49,11 +54,13 @@ function inspect(a){
         stat.innerHTML = "<td>IQ</td><td><a href='https://cdn.discordapp.com/attachments/1004405326331793548/1048973461466382386/image.png' target='_blank'>133</a></td></tr><tr><td>gyorsasag</td><td>csak egy kicsit</td></tr> <tr><td>Special</td><td title='Hitler támogatása miatt a holdon bújó zombinácik nekiadják a holdat a játék kezdetén'>Zombinácik</td></tr>"
         nev.innerText = "Kanye West"
         titulus.innerText = "Cancelled mellet az illusztráció konkrétan"        
+        karakter = a
+
      }
 
 }
 function select(){
-   let karakter = 0;
-   karakter = a
-   console.log(karakter)
+   const selected = karakter
+   console.log(selected)
+
 }
