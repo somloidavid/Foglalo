@@ -1,4 +1,5 @@
 let karakter = null;
+let selected = null;
 
 function inspect(a){
     const elso = document.getElementById("elso");
@@ -60,9 +61,30 @@ function inspect(a){
 
 }
 function select(){
-   const selected = karakter
-   console.log(selected)
-
+   selected = karakter
+   if (selected !=  null)
+   {
+      document.getElementById("main-canvas").style.display = "block";
+      document.getElementById("hide").style.display = "none";
+   }
 }
 
+document.getElementById("gob").onclick = select;
+document.getElementById("elso").onclick = function() {
+   inspect(1)
+};
+document.getElementById("masodik").onclick = function() {
+   inspect(2)
+};
+document.getElementById("harmadik").onclick = function() {
+   inspect(3)
+};
+document.getElementById("negyedik").onclick = function() {
+   inspect(4)
+};
+// document.getElementById("masodik").onclick = inspect(2);
+// document.getElementById("harmadik").onclick = inspect(3);
+// document.getElementById("negyedik").onclick = inspect(4);
 
+
+export {selected};

@@ -1,6 +1,7 @@
 
 import { Popup, QuizInForeground} from './questions.js';
 import { HudArrow } from './hud.js';
+import { selected } from './select.js';
 
 
 class Obj {
@@ -152,20 +153,26 @@ function main() {
     min_distance = 1;
     objToFocus = objects.length - 1;
 
-    window.requestAnimationFrame(loop)
+    window.requestAnimationFrame(loop);
 }
 
 function loop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    console.log(selected);
+    if (QuizInForeground || selected == null) {
+        mouse.clickable = false;
+    }
 
     for (let i = 0; i < objects.length; i++) {
         const obj = objects[i];
 
         obj.relativeZ = obj.distance_from_cam * camera.z;
         if (!obj.isRenderAble()) continue;
-        if (mouse.clickable  && !QuizInForeground) {
+        if (mouse.clickable) {
             if (obj.isCollideWithCursor()) {
                 objToFocus = i;
+                Popup()
             }
         }
 
@@ -197,7 +204,10 @@ function loop() {
     window.requestAnimationFrame(loop)
 }
 
-window.onload = main
+
+main()
+
+
 window.onmousemove = function (event) {
     mouse.x = event.clientX;
     mouse.y = event.clientY;

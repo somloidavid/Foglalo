@@ -16,20 +16,20 @@
     </div>
 
     <div id="main">
-        <div class="hide">
+        <div id="hide">
         <p>Choose your character</p>
         <div class="flexcontainer">
                 <div class="keptarto">
-                    <img src="../img/Sanyi.png" alt="Mi Hazánk!" class="character" id="elso" onclick="inspect(1)">
+                    <img src="../img/Sanyi.png" alt="Mi Hazánk!" class="character" id="elso">
                 </div>
                 <div class="keptarto">
-                    <img src="../img/gemesnorbert.png" alt="Mi Hazánk!" class="character" id="masodik" onclick="inspect(2)">
+                    <img src="../img/gemesnorbert.png" alt="Mi Hazánk!" class="character" id="masodik">
                 </div>     
                 <div class="keptarto-jobb">
-                    <img src="../img/raketa.png" alt="Mi Hazánk!" class="character" id="harmadik" onclick="inspect(3)">
+                    <img src="../img/raketa.png" alt="Mi Hazánk!" class="character" id="harmadik">
                 </div>
                 <div class="keptarto-jobb">
-                    <img src="../img/akcmisi.jfif" alt="Mi Hazánk!" class="character" id="negyedik" onclick="inspect(4)">
+                    <img src="../img/akcmisi.jfif" alt="Mi Hazánk!" class="character" id="negyedik">
                 </div>
             <div class="leiras">
                   <h1 class="karakternev" id="nev"></h1>
@@ -56,7 +56,7 @@
             </div>
             </div>
             <div class="gomb" >
-                <h1 class="selection" id="gob" onclick="select()">Select</h1>
+                <h1 class="selection" id="gob">Select</h1>
             </div>
         </div>
         <canvas id="main-canvas"></canvas>
@@ -95,6 +95,7 @@
     <script src="../start.js"></script>
     <script src="./scripts/game.js" type='module'></script>
     <script src="./scripts/answer.js" type="module"></script>
+    <script src="./scripts/select.js" type="module"></script>
 </body>
 
 

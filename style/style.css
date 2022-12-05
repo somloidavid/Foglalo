@@ -36,6 +36,9 @@ body div#main {
   overflow: auto;
   font-family: "PixelFont";
 }
+body div#main canvas {
+  display: none;
+}
 body div#main div.leiras {
   height: 70vh;
   width: 60vw;
@@ -50,7 +53,7 @@ body div#main h1 {
   width: 100%;
   height: 20%;
   font-size: 30px;
-  color: red;
+  color: blue;
 }
 body div#main h1.karakternev {
   font-size: 80px;
@@ -98,7 +101,7 @@ body div#main td {
   width: 10vw;
 }
 body div#main h1 {
-  color: red;
+  color: blue;
   font-size: 15vh;
   text-align: center;
 }
