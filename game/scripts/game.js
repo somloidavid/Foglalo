@@ -1,12 +1,17 @@
+
 import { Popup, QuizInForeground} from './questions.js';
+import { HudArrow } from './hud.js';
+
 
 class Obj {
-    constructor(index, x, y, width, height, dst_cam) {
+    constructor(index, x, y, width, height, dst_cam, rad) {
         this.imgSrc = index;
         this.pos = {
             x: x,
             y: y,
         }
+
+        this.rad = rad;
 
         this.size = {
             width: width,
@@ -14,6 +19,7 @@ class Obj {
         }
 
         this.distance_from_cam = dst_cam;
+        this.relativeZ = dst_cam;
     }
 
     get_center() {
@@ -22,14 +28,59 @@ class Obj {
             y: this.pos.y - this.size.height / 2,
         }
     }
+
+    isCollideWithCursor() {
+        let mx = mouse.x - window.innerWidth / 2;
+        let my = mouse.y - window.innerHeight / 2;
+
+        if (Math.pow(mx - ((this.pos.x + camera.x) / this.relativeZ), 2) + Math.pow(my - ((this.pos.y + camera.y) / this.relativeZ), 2) <= Math.pow((this.rad) / this.relativeZ, 2)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    camFocus() {
+        camera.x += (-this.pos.x - camera.x) / 20;
+        camera.y += (-this.pos.y - camera.y) / 20;
+        camera.z += (1 / this.distance_from_cam / camera.focus_zoom - camera.z) / 20;
+    }
+
+    isRenderAble() {
+        if (setCoordsToCenter((this.pos.x + this.size.width + camera.x) / this.relativeZ, true) < 0 || 
+            setCoordsToCenter((this.pos.x + camera.x) / this.relativeZ, true) > window.innerWidth ||
+            setCoordsToCenter((this.pos.y + this.size.height + camera.y) / this.relativeZ, false) < 0 ||
+            setCoordsToCenter((this.pos.y + camera.y) / this.relativeZ, false) > window.innerHeight
+        )
+            return false;
+
+        if (this.relativeZ < 0.09 || this.relativeZ > 3000 ) {
+            return false;
+        }
+
+        return true;
+    }
+
+    render() {
+        let objX = setCoordsToCenter((this.get_center().x + camera.x) / this.relativeZ, true);
+        let objY = setCoordsToCenter((this.get_center().y + camera.y) / this.relativeZ, false);
+        let brightness = 1 <= min_distance / camera.focus_zoom / this.relativeZ ? 1 : min_distance / camera.focus_zoom / this.relativeZ;
+
+        ctx.filter = 'brightness(' + brightness + ')';
+        ctx.drawImage(imgs[this.imgSrc], objX, objY, this.size.width / this.relativeZ, this.size.height / this.relativeZ);
+
+    }
 }
 
 let canvas;
 let ctx;
 let imgs;
+let hud_imgs;
 
 let objects;
 let objToFocus;
+
+let hud_objs;
 
 let camera = {
     x: 0,
@@ -42,7 +93,7 @@ let camera = {
 let mouse = {
     x: 0,
     y: 0,
-    down: false,
+    pressed: false,
     clickable: true,
 }
 
@@ -54,37 +105,6 @@ function setCoordsToCenter(Coord, X) {
     }
 
     return Coord + window.innerHeight / 2;
-}
-
-function isCollideWithCursor(obj) {
-    let mx = mouse.x - window.innerWidth / 2;
-    let my = mouse.y - window.innerHeight / 2;
-
-
-    let relativeZ = obj.distance_from_cam * camera.z;
-
-
-    if (Math.pow(mx - ((obj.pos.x + camera.x) / relativeZ), 2) + Math.pow(my - ((obj.pos.y + camera.y) / relativeZ), 2) <= Math.pow((obj.size.width / 2) / relativeZ, 2)) {
-        return true;
-    }
-
-    return false;
-}
-
-function camFocusOnObject(obj) {
-    camera.x += (-obj.pos.x - camera.x) / 20;
-    camera.y += (-obj.pos.y - camera.y) / 20;
-    camera.z += (1 / obj.distance_from_cam / camera.focus_zoom - camera.z) / 20;
-}
-function draw(obj) {
-    let relativeZ = obj.distance_from_cam * camera.z;
-
-    let objX = setCoordsToCenter((obj.get_center().x + camera.x) / relativeZ, true);
-    let objY = setCoordsToCenter((obj.get_center().y + camera.y) / relativeZ, false);
-    let brightness = 1 <= min_distance / camera.focus_zoom / relativeZ ? 1 : min_distance / camera.focus_zoom / relativeZ;
-
-    ctx.filter = 'brightness(' + brightness + ')';
-    ctx.drawImage(imgs[obj.imgSrc], objX, objY, obj.size.width / relativeZ, obj.size.height / relativeZ);
 }
 
 function createNewImg(path) {
@@ -100,10 +120,10 @@ function main() {
     canvas = document.getElementById("main-canvas");
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+    mouse.clickable = false;
 
     ctx = canvas.getContext("2d");
     ctx.imageSmoothingEnabled = false;
-
 
     imgs = [
         createNewImg("../img/boojg.png"),
@@ -111,14 +131,26 @@ function main() {
         createNewImg("../img/planet1.png"),
     ];
 
-    objects = [
-        new Obj(0, 30, 200, 92, 92, 1.9),
-        new Obj(1, -200, 100, 128, 128, 1.2),
-        new Obj(2, 300, 100, 256, 256, 0.7),
+    hud_imgs = [
+        createNewImg("../img/hud/right_arrow_select.png"),
+        createNewImg("../img/hud/left_arrow_select.png"),
     ];
 
-    min_distance = objects[objects.length - 1].distance_from_cam;
-    objToFocus = objects[objects.length - 1];
+    objects = [
+        new Obj(1, 30, -200, 92, 92, 35, 92 / 2),
+        new Obj(0, 30, 200, 92, 92, 12, 92 / 2),
+        new Obj(1, -200, 100, 128, 128, 7, 128 / 2),
+        new Obj(2, window.innerWidth/2, window.innerHeight/2, 256, 256, 1, 124 / 2),
+        new Obj(2, -300, 100, 256, 256, 0.3, 124 / 2),
+    ];
+
+    hud_objs = [
+        new HudArrow(1, 32, window.innerHeight / 2 - 32, 32, 64),
+        new HudArrow(0, window.innerWidth - 32 * 2, window.innerHeight / 2 - 32, 32, 64),
+    ];
+
+    min_distance = 1;
+    objToFocus = objects.length - 1;
 
     window.requestAnimationFrame(loop)
 }
@@ -128,36 +160,54 @@ function loop() {
 
     for (let i = 0; i < objects.length; i++) {
         const obj = objects[i];
-        if (mouse.clickable && !QuizInForeground) {
-            if (mouse.down) {
-                if (isCollideWithCursor(obj)) {
-                    objToFocus = obj;
-                    mouse.clickable = false;
-                    Popup();
+
+        obj.relativeZ = obj.distance_from_cam * camera.z;
+        if (!obj.isRenderAble()) continue;
+        if (mouse.clickable  && !QuizInForeground) {
+            if (obj.isCollideWithCursor()) {
+                objToFocus = i;
+            }
+        }
+
+        obj.render();
+    }
+
+    for (let i = 0; i < hud_objs.length; i++) {
+        const obj = hud_objs[i];
+
+        if (mouse.clickable) {
+            if (obj.isCollideWithCursor(mouse)) {
+                objToFocus += obj.dir;
+                if (objToFocus < 0) {
+                    objToFocus = 0;
+                }
+                else if (objToFocus > objects.length - 1) {
+                    objToFocus = objects.length - 1;
+
                 }
             }
         }
 
-        camFocusOnObject(objToFocus);
-        draw(obj);
+        obj.render(ctx, hud_imgs);
     }
 
+
+    objects[objToFocus].camFocus();
+    mouse.clickable = false;
     window.requestAnimationFrame(loop)
 }
 
-var lastRender = 0
 window.onload = main
-window.addEventListener("mousemove", function (event) {
+window.onmousemove = function (event) {
     mouse.x = event.clientX;
     mouse.y = event.clientY;
-});
+};
 
+window.onmousedown = function (event) {
+    mouse.pressed = true;
+};
 
-window.addEventListener("mousedown", function (event) {
-    mouse.down = true;
-});
-
-window.addEventListener("mouseup", function (event) {
+window.onmouseup = function (event) {
     mouse.clickable = true;
-    mouse.down = false;
-});
+    mouse.pressed = false;
+};
