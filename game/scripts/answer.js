@@ -6,7 +6,7 @@ function Answer(a) {
         let element = document.getElementById(a);
         element.style.border = "thick solid orange";
         answered = true;
-        if (element.innerHTML == `<p>${randq.correct}</p>`) {
+        if (element.innerHTML == `<p>${randq[0].correct}</p>`) {
             setTimeout(() => {
                 element.style.backgroundColor = "rgb(0,255,0)";
             }, 1000);
