@@ -8,9 +8,8 @@ class Question {
     }
 }
 
-const input = [["Ki Kriszhadvice?", "Tanács Krisztián", "A prediction-ök démonja", "A Béke Szigetének őrzője"], ["Milyen méretű Herby cigarettája?", "Közepes", "Kis", "Nagy"], ["Melyik egy chatbot neve?", "Málik Irén", "Stohl András", "Ben Dover"], ["Mi lett az L-ből az ismert népzene szerint?", "W", "N", "Szalonna"]];
+const input = [["Ki Kriszhadvice?", "Tanács Krisztián", "A prediction-ök démonja", "A Béke Szigetének őrzője"], ["Milyen méretű Herby cigarettája?", "Közepes", "Kis", "Nagy"], ["Melyik egy chatbot neve?", "Málik Irén", "Stohl András", "Ben Dover"], ["Mi lett az L-ből az ismert népzene szerint?", "W", "N", "Szalonna"], ["Beugratós-e a Kvízapo.hu?", "Igen", "1kg vas", "GWM Music Production"]];
 const questions = [];
-
 input.forEach(q => {
     questions.push(new Question(q));
 });
@@ -28,7 +27,6 @@ function Popup() {
     document.getElementById("popup").style.display = "flex";
     document.getElementById("popup").style.opacity = "1";
     randq = questions.splice(Math.floor(Math.random() * questions.length), 1);
-    console.log(randq[0].answers);
     document.getElementById("question").innerHTML = randq[0].question;
     const ch1 = document.getElementById("ch1");
     const ch2 = document.getElementById("ch2");
