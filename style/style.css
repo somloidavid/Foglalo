@@ -43,6 +43,9 @@ body div#main div.leiras {
   top: 30%;
   left: 40%;
 }
+body div#main .xdd {
+  display: none;
+}
 body div#main h1 {
   width: 100%;
   height: 20%;
