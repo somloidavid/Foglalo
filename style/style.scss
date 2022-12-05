@@ -39,6 +39,9 @@ body {
         overflow: auto;
         font-family: 'PixelFont';
 
+        div#planet_info {
+            transition: opacity 0.3s;
+        }
 
         p {
             color: white;

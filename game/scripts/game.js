@@ -198,9 +198,13 @@ function loop() {
     
 
     let obj = objects[objToFocus];
-    planetInfo.style.left = `${setCoordsToCenter((obj.pos.x + obj.rad + camera.x) / obj.relativeZ, true) + 100}px`
     if (objects[objToFocus].camFocus()) {
+        planetInfo.style.left = `${setCoordsToCenter((obj.pos.x + obj.rad + camera.x) / obj.relativeZ, true) + 100}px`
         planetInfo.innerHTML = obj.planetInfo;
+        planetInfo.style.opacity = "100%";
+    }
+    else {
+        planetInfo.style.opacity = "0%";
     }
     mouse.clickable = false;
     frames ++;

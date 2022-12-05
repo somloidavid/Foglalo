@@ -5,12 +5,12 @@
 
 body {
   overflow-y: hidden;
-  @font-face {
-    body {
-      font-family: "PixelFont";
-      src: url(../font/alterebro-pixel-font.ttf) format("truetype");
-      font-family: PixelFont;
-    }
+}
+@font-face {
+  body {
+    font-family: "PixelFont";
+    src: url(../font/alterebro-pixel-font.ttf) format("truetype");
+    font-family: PixelFont;
   }
 }
 body #zum {
@@ -35,6 +35,9 @@ body div#main {
   display: block;
   overflow: auto;
   font-family: "PixelFont";
+}
+body div#main div#planet_info {
+  transition: opacity 0.3s;
 }
 body div#main p {
   color: white;
