@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -40,7 +42,24 @@ body {
         font-family: 'PixelFont';
 
         div#planet_info {
-            transition: opacity 0.3s;
+            transition: opacity 0.3s ease-out;
+            background-image: url("../img/hud/info.png"); 
+            position: absolute; 
+            width: 500px; 
+            height: 300px; 
+            top: 0px; 
+            font-size: 16px;
+            top: calc(50% - 150px);
+            padding: 0px;
+
+            p {
+                font-family: 'VT323', monospace;
+                color: rgb(137, 191, 207);
+                text-align: left;
+                margin: 0;
+                padding: 0;
+                margin-left: 20px;
+            }
         }
 
         p {

@@ -18,7 +18,10 @@ class Obj {
 
         this.distance_from_cam = dst_cam;
         this.relativeZ = dst_cam;
-        this.planetInfo = info;
+        this.planetInfo = "";
+        for (let i = 0; i < info.length; i++) {
+            this.planetInfo += '<p>' + info[i] + '</p>';
+        }
     }
 
     get_center() {
@@ -45,9 +48,11 @@ class Obj {
         camera.z += (1 / this.distance_from_cam / camera.focus_zoom - camera.z) / 20;
 
         if (Math.abs(-this.pos.x - 150 - camera.x - this.pos.y - camera.y) < 100) {
-            return true;
+            planetInfo.style.opacity = "100%";
+            return true;            
         }
-
+        displayInfo.displayed = false;
+        planetInfo.style.opacity = "0%";
         return false;
     }
 
@@ -85,6 +90,10 @@ let objects;
 let objToFocus;
 
 let hud_objs;
+let displayInfo = {
+    info: "",
+    displayed: false,
+}
 
 let camera = {
     x: 0,
@@ -143,11 +152,11 @@ function main() {
     ];
 
     objects = [
-        new Obj(1, 30, -200, 92, 92, 200, 92 / 2, ["sadf: sdf"]),
-        new Obj(0, 30, 200, 256, 256, 25, 256 / 2, ["sadf: sdf17281786"]),
-        new Obj(1, -200, 100, 128, 128, 7, 128 / 2, ["s12adf: sdf"]),
-        new Obj(2, window.innerWidth/2, window.innerHeight/2, 256, 256, 1, 124 / 2, ["gdfjlkf: sdf", "asd"]),
-        new Obj(2, -300, 100, 256, 256, 0.1, 124 / 2, ["dfg: sdfgsdf"]),
+        new Obj(1, 30, -200, 92, 92, 200, 92 / 2, ["IDE MAR NINCS OTLETEM"]),
+        new Obj(0, 30, 200, 256, 256, 25, 256 / 2, ["haha: HE"]),
+        new Obj(1, -200, 100, 128, 128, 7, 128 / 2, ["Kriszthadvice: false"]),
+        new Obj(2, window.innerWidth/2, window.innerHeight/2, 256, 256, 1, 124 / 2, ["population: 2", "Norb on planet: 0"]),
+        new Obj(2, -300, 100, 256, 256, 0.1, 124 / 2, ["francboojg: ez itt"]),
     ];
 
     hud_objs = [
@@ -198,16 +207,15 @@ function loop() {
     
 
     let obj = objects[objToFocus];
-    if (objects[objToFocus].camFocus()) {
-        planetInfo.style.left = `${setCoordsToCenter((obj.pos.x + obj.rad + camera.x) / obj.relativeZ, true) + 100}px`
+    obj.camFocus();
+    if (!displayInfo.displayed) {
+        displayInfo.displayed = true;
         planetInfo.innerHTML = obj.planetInfo;
-        planetInfo.style.opacity = "100%";
     }
     else {
-        planetInfo.style.opacity = "0%";
+        planetInfo.style.left = `${setCoordsToCenter((obj.pos.x + obj.rad + camera.x) / obj.relativeZ, true) + 100}px`
     }
     mouse.clickable = false;
-    frames ++;
     window.requestAnimationFrame(loop)
 }
 
