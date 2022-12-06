@@ -58,9 +58,16 @@ body {
             p {
                 font-family: 'VT323', monospace;
                 color: rgb(137, 191, 207);
+                font-size: 30px;
                 text-align: left;
-                margin: 0;
-                padding: 0;
+                margin-left: 20px;
+            }
+
+            h1 {
+                font-family: 'VT323', monospace;
+                color: rgb(74, 228, 163);
+                font-size: 30px;
+                text-align: left;
                 margin-left: 20px;
             }
         }
@@ -293,6 +300,18 @@ body {
                                 font-size: 3vh;
                                 text-align: center;
                             }
+                        }
+
+                        div.chosen_answ {
+                            border: thick solid orange;
+                        }
+
+                        div.correct {
+                            background-color: green;
+                        }
+
+                        div.incorrect {
+                            background-color: red;
                         }
 
                     }

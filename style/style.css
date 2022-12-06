@@ -53,9 +53,15 @@ body div#main div#planet_info {
 body div#main div#planet_info p {
   font-family: "VT323", monospace;
   color: rgb(137, 191, 207);
+  font-size: 30px;
   text-align: left;
-  margin: 0;
-  padding: 0;
+  margin-left: 20px;
+}
+body div#main div#planet_info h1 {
+  font-family: "VT323", monospace;
+  color: rgb(74, 228, 163);
+  font-size: 30px;
+  text-align: left;
   margin-left: 20px;
 }
 body div#main canvas {
@@ -260,6 +266,15 @@ body div#main div.container div#popup div.content div#answer div.choice p {
   color: black;
   font-size: 3vh;
   text-align: center;
+}
+body div#main div.container div#popup div.content div#answer div.chosen_answ {
+  border: thick solid orange;
+}
+body div#main div.container div#popup div.content div#answer div.correct {
+  background-color: green;
+}
+body div#main div.container div#popup div.content div#answer div.incorrect {
+  background-color: red;
 }
 body div#main div.container div#popup div.content img {
   height: 35vh;

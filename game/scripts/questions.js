@@ -1,4 +1,4 @@
-import { answered, Answer } from "./answer.js";
+// import { Answer } from "./answer.js";
 
 class Question {
     constructor(q) {
@@ -20,9 +20,11 @@ function ModifyQuizInForeground(q){
     QuizInForeground = q;
 }
 
-function Popup() {
+let answerable = true;
+function Popup(obj) {
     let timer = document.getElementById("timer");
-    timer.innerText = "11";
+    timer.innerText = "6";
+    answerable = true;
     QuizInForeground = true;
     document.getElementById("popup").style.display = "flex";
     document.getElementById("popup").style.opacity = "1";
@@ -35,32 +37,76 @@ function Popup() {
     ch2.innerHTML = `<p>${randq[0].answers.splice(Math.random() * randq[0].answers.length, 1)}</p>`;
     ch3.innerHTML = `<p>${randq[0].answers.splice(Math.random() * randq[0].answers.length, 1)}</p>`;
 
-    document.getElementById("ch1").addEventListener("click", function(){Answer("ch1")});
-    document.getElementById("ch2").addEventListener("click", function(){Answer("ch2")});
-    document.getElementById("ch3").addEventListener("click", function(){Answer("ch3")});
+    let elem;
+
+    window.addEventListener("click", function(event){ 
+        if (event.target.parentElement.classList[0] == "choice") {
+            elem = event.target.parentElement;
+        } 
+        else if (event.target.classList[0] == "choice") {
+            elem = event.target;
+        }
+
+        Answer(elem);
+    });
 
     let interval = setInterval(() => {
         timer.innerHTML = `<p>${parseInt(timer.innerText) - 1}</p>`;
-        console.log(interval)
         if (timer.innerText <= 0) {
             clearInterval(interval);
-            OffTimer();
-        }
-        else if (answered) {
-            clearInterval(interval);
+            switch (validate(elem)) {
+                case true:
+                    obj.isConquered = true;
+                    break;
+                // case undefined: 
+                //     let notif = document.getElementById("notif");
+                //     notif.style.display = "block";
+                //     notif.style.opacity = "1";
+                //     break;
+                default:
+                    break;
+            }
+            OffTimer(elem);
         }
     }, 1000);
 }
 
-function OffTimer() {
-    let notif = document.getElementById("notif");
-    notif.style.display = "block";
-    notif.style.opacity = "1";
-    document.getElementById("popup").style.display = "none";
+function OffTimer(element) {
     setTimeout(() => {
-        notif.style.display = "none";
-        ModifyQuizInForeground(false);
-    }, 3000);
+        // let notif = document.getElementById("notif");
+        // notif.style.display = "block";
+        // notif.style.opacity = "1";
+        document.getElementById("popup").style.display = "none";
+        if (element)
+            element.className = "choice";
+        QuizInForeground = false;
+    }, 1000);
+
 }
 
-export { Popup, randq, QuizInForeground, ModifyQuizInForeground};
+function validate(element) {
+    answerable = false;
+    if (element) {
+        if (element.innerHTML == `<p>${randq[0].correct}</p>`) {
+            element.classList.add("correct");
+            return true;
+        }
+        else {
+            element.classList.add("incorrect");
+            return false;
+        }
+    }
+    return undefined;
+}
+
+function Answer(element) {
+    if (answerable) {
+        if (element && !element.classList.contains("chosen_answ")) {
+            if (document.querySelector(".chosen_answ"))
+                document.querySelector(".chosen_answ").classList.remove("chosen_answ");
+            element.classList.add("chosen_answ");
+        }
+    }
+}
+
+export { Popup, randq, QuizInForeground, ModifyQuizInForeground };
