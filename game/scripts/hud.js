@@ -34,6 +34,4 @@ class HudArrow {
     }
 }
 
-
-
 export { HudArrow };
