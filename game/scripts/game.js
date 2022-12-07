@@ -70,7 +70,7 @@ function main() {
     objects = [
         new Obj(1, 30, -200, 92, 92, 200, 92 / 2, "Some planet", ["Nothing special"], 2),
         new Obj(0, 30, 200, 256, 256, 25, 256 / 2, "Norb's wonder land", ["Norb gonna rape you"], 1),
-        new Obj(1, -200, 100, 128, 128, 7, 128 / 2, "Juputr", ["Juputr", "Juputr"], 1),
+        new Obj(1, -200, 100, 128, 128, 7, 128 / 2, "Juputr", ["Juputr", "Bottom  text"], 1),
         new Obj(2, window.innerWidth/2, window.innerHeight/2, 256, 256, 1, 124 / 2, "Moon", ["Elm usk vs Kanye", "Super duper Hitler plot twist"], 1),
         new Obj(2, -300, 100, 256, 256, 0.1, 124 / 2, "Hah heh", null, 1),
     ];
