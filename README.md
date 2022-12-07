@@ -15,3 +15,4 @@
     <li>Asset rajzolás(Pixel Art) - Ádám</li>
 </ul>
 
+https://docs.google.com/presentation/d/1-zGo962Tyt2pSmhpv6AHrZOIGJyI80FlOZVpAcDMJRE/edit#slide=id.g13823b08df8_0_1842
