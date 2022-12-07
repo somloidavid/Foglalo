@@ -64,7 +64,7 @@ function select(){
    selected = karakter
    if (selected !=  null)
    {
-      document.getElementById("planet_info").style.display = "block"
+      document.getElementById("planet_info").style.display = "flex"
       document.getElementById("main-canvas").style.display = "block";
       document.getElementById("hide").style.display = "none";
    }

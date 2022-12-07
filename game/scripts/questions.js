@@ -1,4 +1,5 @@
 // import { Answer } from "./answer.js";
+const infoContent = document.getElementById("info_content");
 
 class Question {
     constructor(q) {
@@ -56,7 +57,12 @@ function Popup(obj) {
             clearInterval(interval);
             switch (validate(elem)) {
                 case true:
-                    obj.isConquered = true;
+                    if (--obj.question_limit == 0) {
+                        obj.isConquered = true;
+                        obj.planetInfoRaw[obj.planetInfoRaw.length-1] = '<p style="color: rgb(74, 228, 163);">Staus: Ally</p>';
+                        obj.planetInfo = obj.infoToStr();
+                        infoContent.innerHTML = obj.planetInfo;
+                    }
                     break;
                 // case undefined: 
                 //     let notif = document.getElementById("notif");

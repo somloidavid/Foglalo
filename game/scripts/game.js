@@ -33,6 +33,8 @@ let mouse = {
 }
 
 const planetInfo = document.getElementById("planet_info");
+const infoContent = document.getElementById("info_content");
+const infoButton = document.getElementById("c_button");
 
 let min_distance = undefined;
 
@@ -66,7 +68,7 @@ function main() {
     ];
 
     objects = [
-        new Obj(1, 30, -200, 92, 92, 200, 92 / 2, "Some planet", ["Nothing special"], 1),
+        new Obj(1, 30, -200, 92, 92, 200, 92 / 2, "Some planet", ["Nothing special"], 2),
         new Obj(0, 30, 200, 256, 256, 25, 256 / 2, "Norb's wonder land", ["Norb gonna rape you"], 1),
         new Obj(1, -200, 100, 128, 128, 7, 128 / 2, "Juputr", ["Juputr", "Juputr"], 1),
         new Obj(2, window.innerWidth/2, window.innerHeight/2, 256, 256, 1, 124 / 2, "Moon", ["Elm usk vs Kanye", "Super duper Hitler plot twist"], 1),
@@ -97,14 +99,16 @@ function loop() {
 
         obj.relativeZ = obj.distance_from_cam * camera.z;
         if (!obj.isRenderAble(camera, min_distance, window)) continue;
+        infoButton.onclick = function() {
+            Popup(obj);
+        };
+
         if (mouse.clickable) {
             if (obj.isCollideWithCursor(mouse, camera)) {
                 objToFocus = i;
-                if (!obj.isConquered) {
-                    Popup(obj);
-                }
             }
         }
+
         obj.render(ctx, imgs, camera, window, min_distance);
     }
 
@@ -122,16 +126,16 @@ function loop() {
                 }
             }
         }
-
+        
         obj.render(ctx, hud_imgs);
     }
     
 
     let obj = objects[objToFocus];
-    obj.camFocus(camera, displayInfo, planetInfo);
+    obj.camFocus(camera, displayInfo, infoContent, infoButton);
     if (!displayInfo.displayed) {
         displayInfo.displayed = true;
-        planetInfo.innerHTML = obj.planetInfo;
+        infoContent.innerHTML = obj.planetInfo;
     }
     else {
         planetInfo.style.left = `${setCoordsToCenter((obj.pos.x + obj.rad + camera.x) / obj.relativeZ, true, window) + 100}px`
@@ -141,7 +145,6 @@ function loop() {
 }
 
 main()
-
 
 window.onmousemove = function (event) {
     mouse.x = event.clientX;

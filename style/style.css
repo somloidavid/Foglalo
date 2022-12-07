@@ -40,29 +40,62 @@ body div#main {
 body div#main div#planet_info {
   display: none;
   transition: opacity 0.3s ease-out;
-  background-image: url("../img/hud/info.png");
   position: absolute;
+  top: calc(50% - 250px);
+  height: 500px;
+  justify-content: center;
+  flex-direction: column;
+}
+body div#main div#planet_info #info_content {
+  transition: all 0.3s;
+  background-image: url("../img/hud/info.png");
   width: 500px;
   height: 300px;
   top: 0px;
   font-size: 16px;
-  top: calc(50% - 150px);
   padding: 0px;
   z-index: 0;
 }
-body div#main div#planet_info p {
+body div#main div#planet_info #info_content p {
   font-family: "VT323", monospace;
   color: rgb(137, 191, 207);
   font-size: 30px;
   text-align: left;
   margin-left: 20px;
 }
-body div#main div#planet_info h1 {
+body div#main div#planet_info #info_content br {
+  content: "";
+  font-size: 30px;
+  text-align: left;
+  margin-left: 20px;
+}
+body div#main div#planet_info #info_content h1 {
   font-family: "VT323", monospace;
   color: rgb(74, 228, 163);
   font-size: 30px;
   text-align: left;
   margin-left: 20px;
+}
+body div#main div#planet_info #c_button {
+  transition: all 0.3s;
+  font-family: "VT323", monospace;
+  background-image: url("../img/hud/button.png");
+  height: 50px;
+  width: 313px;
+}
+body div#main div#planet_info #c_button h1 {
+  display: inline-block;
+  vertical-align: middle;
+  color: rgb(74, 228, 163);
+  font-size: 30px;
+  text-align: center;
+  margin-left: 20px;
+}
+body div#main div#planet_info #c_button:hover {
+  cursor: pointer;
+}
+body div#main div#planet_info #c_button:hover h1 {
+  color: rgb(228, 74, 74);
 }
 body div#main canvas {
   display: none;
@@ -219,7 +252,7 @@ body div#main div.container div#popup {
   background-color: red;
   width: 55%;
   height: 50vh;
-  display: flex;
+  display: none;
   opacity: 0;
   transition: opacity 0.85s;
   flex-direction: column;

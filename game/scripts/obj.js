@@ -15,12 +15,14 @@ class Obj {
 
         this.distance_from_cam = dst_cam;
         this.relativeZ = dst_cam;
-        this.planetInfo = `<h1>ID: ${planet_name}</h1>`;
+        this.planetInfoRaw = [`<h1>ID: ${planet_name}</h1>`];
         if (additionalInfo != null) {
             for (let i = 0; i < additionalInfo.length; i++) {
-                this.planetInfo += '<p>' + additionalInfo[i] + '</p>';
+                this.planetInfoRaw.push('<p>' + additionalInfo[i] + '</p>');
             }
         }
+        this.planetInfoRaw.push('<p style="color: rgb(228, 74, 74);">Staus: Enemy</p>');
+        this.planetInfo = this.infoToStr();
 
         this.question_limit = limit;
         this.isConquered = false;
@@ -44,18 +46,31 @@ class Obj {
         return false;
     }
 
-    camFocus(camera, displayInfo, planetInfo) {
+    camFocus(camera, displayInfo, content, button) {
         camera.x += (-this.pos.x - 150 - camera.x) / 20;
         camera.y += (-this.pos.y - camera.y) / 20;
         camera.z += (1 / this.distance_from_cam / camera.focus_zoom - camera.z) / 20;
 
-        if (Math.abs(-this.pos.x - 150 - camera.x - this.pos.y - camera.y) < 100) {
-            planetInfo.style.opacity = "100%";
-            return true;            
+
+        const dst= Math.abs(-this.pos.x - 150 - camera.x - this.pos.y - camera.y);
+        if (this.isConquered) {
+            button.style.display = "none";
         }
-        displayInfo.displayed = false;
-        planetInfo.style.opacity = "0%";
-        return false;
+        else {
+            button.style.display = "block";
+        }
+        if (!this.isConquered && dst < 40) {
+            button.style.opacity = "100%";
+        }
+
+        if (dst < 100) {
+            content.style.opacity = "100%";
+        }
+        else {
+            displayInfo.displayed = false;
+            content.style.opacity = "0%";
+            button.style.opacity = "0%";
+        }
     }
 
     isRenderAble(camera, min_distance, window) {
@@ -80,6 +95,18 @@ class Obj {
 
         ctx.filter = 'brightness(' + brightness + ')';
         ctx.drawImage(imgs[this.imgSrc], objX, objY, this.size.width / this.relativeZ, this.size.height / this.relativeZ);
+    }
+
+    infoToStr() {
+        let info = "";
+        for (let i = 0; i < 5; i++) {
+            if (i+1 < this.planetInfoRaw.length)
+                info += this.planetInfoRaw[i];
+            else
+                info += "<br>";
+        }
+        info += this.planetInfoRaw[this.planetInfoRaw.length-1];
+        return info;
     }
 }
 
