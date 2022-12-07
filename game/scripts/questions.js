@@ -1,4 +1,4 @@
-// import { Answer } from "./answer.js";
+import { objects } from "./game.js";
 const infoContent = document.getElementById("info_content");
 
 class Question {
@@ -15,6 +15,7 @@ input.forEach(q => {
     questions.push(new Question(q));
 });
 
+let conqueredPlanets = 0;
 let randq;
 let QuizInForeground;
 function ModifyQuizInForeground(q){
@@ -59,6 +60,7 @@ function Popup(obj) {
                 case true:
                     if (--obj.question_limit == 0) {
                         obj.isConquered = true;
+                        conqueredPlanets ++;
                         obj.planetInfoRaw[obj.planetInfoRaw.length-1] = '<p style="color: rgb(74, 228, 163);">Staus: Ally</p>';
                         obj.planetInfo = obj.infoToStr();
                         infoContent.innerHTML = obj.planetInfo;
@@ -89,12 +91,15 @@ function OffTimer(element) {
     }, 1000);
 
 }
-
 function validate(element) {
     answerable = false;
     if (element) {
         if (element.innerHTML == `<p>${randq[0].correct}</p>`) {
             element.classList.add("correct");
+            
+console.log(objects.length)
+            objects[objects.length - conqueredPlanets - 1].hp --;
+            document.getElementById("hp").innerText = `${objects[objects.length - conqueredPlanets - 1].hp}/${objects[objects.length - conqueredPlanets - 1].limit}`;
             return true;
         }
         else {

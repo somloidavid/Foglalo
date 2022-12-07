@@ -79,12 +79,13 @@ function main() {
         new HudArrow(1, 32, window.innerHeight / 2 - 32, 32, 64),
         new HudArrow(0, window.innerWidth - 32 * 2, window.innerHeight / 2 - 32, 32, 64),
     ];
-
+    
     min_distance = 1;
     objToFocus = objects.length - 1;
-
+    
     window.requestAnimationFrame(loop);
 }
+
 
 
 function loop() {
@@ -159,3 +160,5 @@ window.onmouseup = function (event) {
     mouse.clickable = true;
     mouse.pressed = false;
 };
+
+export { objects };
