@@ -3,17 +3,11 @@
 * {
     margin: 0;
     padding: 0;
+    font-family: 'VT323', monospace;
 }
 
 body {
     overflow-y: hidden;
-
-    @font-face {
-        font-family: 'PixelFont';
-        src: url(../font/alterebro-pixel-font.ttf) format("truetype");
-        font-family: PixelFont;
-    }
-
 
     #zum {
         position: absolute;
@@ -39,8 +33,6 @@ body {
         height: 100vh;
         display: block;
         overflow: auto;
-        font-family: 'PixelFont';
-
 
         div#planet_info {
             display: none;
@@ -62,7 +54,6 @@ body {
                 z-index: 0;
     
                 p {
-                    font-family: 'VT323', monospace;
                     color: rgb(137, 191, 207);
                     font-size: 30px;
                     text-align: left;
@@ -77,7 +68,6 @@ body {
                 }
     
                 h1 {
-                    font-family: 'VT323', monospace;
                     color: rgb(74, 228, 163);
                     font-size: 30px;
                     text-align: left;
@@ -87,7 +77,6 @@ body {
 
             #c_button {
                 transition: all 0.3s;
-                font-family: 'VT323', monospace;
                 background-image: url("../img/hud/button.png");
                 height: 50px;
                 width: 313px;

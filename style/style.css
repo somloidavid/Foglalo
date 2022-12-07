@@ -2,17 +2,11 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: "VT323", monospace;
 }
 
 body {
   overflow-y: hidden;
-}
-@font-face {
-  body {
-    font-family: "PixelFont";
-    src: url(../font/alterebro-pixel-font.ttf) format("truetype");
-    font-family: PixelFont;
-  }
 }
 body #zum {
   position: absolute;
@@ -35,7 +29,6 @@ body div#main {
   height: 100vh;
   display: block;
   overflow: auto;
-  font-family: "PixelFont";
 }
 body div#main div#planet_info {
   display: none;
@@ -57,7 +50,6 @@ body div#main div#planet_info #info_content {
   z-index: 0;
 }
 body div#main div#planet_info #info_content p {
-  font-family: "VT323", monospace;
   color: rgb(137, 191, 207);
   font-size: 30px;
   text-align: left;
@@ -70,7 +62,6 @@ body div#main div#planet_info #info_content br {
   margin-left: 20px;
 }
 body div#main div#planet_info #info_content h1 {
-  font-family: "VT323", monospace;
   color: rgb(74, 228, 163);
   font-size: 30px;
   text-align: left;
@@ -78,7 +69,6 @@ body div#main div#planet_info #info_content h1 {
 }
 body div#main div#planet_info #c_button {
   transition: all 0.3s;
-  font-family: "VT323", monospace;
   background-image: url("../img/hud/button.png");
   height: 50px;
   width: 313px;

@@ -9,7 +9,7 @@ class Question {
     }
 }
 
-const input = [["Ki Kriszhadvice?", "Tanács Krisztián", "A prediction-ök démonja", "A Béke Szigetének őrzője"], ["Milyen méretű Herby cigarettája?", "Közepes", "Kis", "Nagy"], ["Melyik egy chatbot neve?", "Málik Irén", "Stohl András", "Ben Dover"], ["Mi lett az L-ből az ismert népzene szerint?", "W", "N", "Szalonna"], ["Beugratós-e a Kvízapo.hu?", "Igen", "1kg vas", "GWM Music Production"], ["Hol található Nagybajom?", "Somogy megyében", "Az Isten háta mögött", "Csenevész mellett"]];
+const input = [["Ki Kriszhadvice?", "Tanács Krisztián", "A prediction-ök démonja", "A Béke Szigetének őrzője"], ["Milyen méretű Herby cigarettája?", "Közepes", "Kis", "Nagy"], ["Melyik egy chatbot neve?", "Málik Irén", "Stohl András", "Ben Dover"], ["Mi lett az L-ből az ismert népzene szerint?", "W", "N", "Szalonna"], ["Beugratós-e a Kvízapo.hu?", "Igen", "1kg vas", "GWM Music Production"], ["Hol található Nagybajom?", "Somogy megyében", "Az Isten háta mögött", "Csenevész mellett"], ["Mi a megfelelő öltözet(úgymond viselet) egy programozónak?", "Combzokni hozzá illő kiegészítőkkel", "Fehér ing", "Kényszerzubbony"], ["Mi 2022.10.07. vicces szava?", "Hebehurgya", "Istók", "Öblös"], ["Mennyit posztol Sanyi bá naponta?", "∞", "3", "Sándor"]];
 const questions = [];
 input.forEach(q => {
     questions.push(new Question(q));
@@ -98,7 +98,7 @@ function validate(element) {
             return true;
         }
         else {
-            element.classList.add("incorrect");
+            element.classList.add("incorrect")
             return false;
         }
     }
