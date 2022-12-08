@@ -32,7 +32,6 @@ class Obj {
         this.planetInfoRaw.push(`<p style="color: rgb(228, 74, 74);" id="hp">${this.hp}/${this.question_limit}</p>`);
         this.planetInfo = this.infoToStr();
 
-        this.question_limit = limit;
         this.isConquered = isConquered;
     }
 
