@@ -28,7 +28,7 @@ body {
 
 
     div#main {
-        background-image: url(../img/background.jpg);
+        background-image: url(../img/background/bg1.png);
         width: 100%;
         height: 100vh;
         display: block;
@@ -203,35 +203,42 @@ body {
             // -webkit-transition-timing-function: ease; 
             
         }
+
         .highlighted{
             transform: scale(2,2);
             position: absolute;
             top:50% !important;
             left:10% !important;
         }
+
         #masodik{
             position: absolute;
             top: 6%;
             left: 25%;
         }
+
         #harmadik{
             position: absolute;
             top: 6%;
             left:50%;
         }
+
         #elso{
             position: absolute;
             top: 6%;
             left:0%;
         }
+
         #negyedik{
             position: absolute;
             top: 6%;
             left:75%;
         }
+
         div.keptarto{
-        margin: 1px;
+            margin: 1px;
         }
+
         div.flexcontainer{
             display: flex;
             // flex-direction: row; 
@@ -273,42 +280,44 @@ body {
                 z-index: 1;
                 position: absolute;
                 top: 25%;
-                background-color: red;
-                width: 55%;
-                height: 50vh;
+                background-image: url("../img/hud/questionbg.png");
+                width: 900px;
+                height: 600px;
                 display: none;
                 opacity: 0;
                 transition: opacity 0.85s;
                 flex-direction: column;
-                justify-content: center;
+                justify-content: space-between;
                 align-items: center;
 
                 .headline {
-                    height: 30vh;
-                    width: 100%;
+                    height: 129px;
+                    width: calc(100% - 230px * 2);
                     display: block;
 
                     h1 {
                         text-align: center;
-                        width: 80%;
-                        margin-left: 10%;
-                        height: 6vh;
-                        font-size: 40px;
+                        color: #88CDCA;
+                        height: 129px;
+                        font-size: 35px;
                     }
 
                     #timer {
-                        background-color: black;
-                        height: 6vh;
-                        width: 14%;
-                        float: right;
+                        height: 39px;
+                        width: 42px;
+                        font-size: 20px;
+                        position: absolute;
+                        right: 0;
+                        top: -5px;
                     }
                 }
 
                 div.content {
                     width: 100%;
                     height: 70%;
-                    display: block;
+                    display: flex;
                     flex-direction: row;
+                    justify-content: center;
 
                     div#answer {
                         top: 28.7vh;
@@ -316,9 +325,10 @@ body {
                         height: 40vh;
 
                         div.choice {
+                            transition: all .3s;
                             background-color: white;
-                            margin-bottom: 4vh;
-                            margin-left: 5%;
+                            border: 8px solid #88CDCA; 
+                            margin-bottom: 20px;
                             width: 60%;
                             height: 9vh;
 
@@ -330,25 +340,26 @@ body {
                         }
 
                         div.chosen_answ {
-                            border: thick solid orange;
+                            border-color:  orange; 
                         }
 
                         div.correct {
-                            background-color: green;
+                            border-color: rgb(45, 63, 45);
+                            background-color: rgb(71, 109, 71);
                         }
 
                         div.incorrect {
-                            background-color: red;
+                            border-color: rgb(116, 24, 24);
+                            background-color: rgb(160, 64, 64);
                         }
                     }
-
                     img {
-                        height: 35vh;
+                        height: 300px;
+                        border: 8px solid #88CDCA; 
                         display: block;
-                        position: absolute;
-                        top: 15vh;
-                        left: 73.5%;
+                        right: 0px;
                     }
+
                 }
             }
 
