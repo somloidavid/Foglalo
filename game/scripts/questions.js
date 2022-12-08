@@ -1,4 +1,4 @@
-import { objects, selected } from "./game.js";
+import { objects, selected, conqueredPlanets, setConcPlanet } from "./game.js";
 const infoContent = document.getElementById("info_content");
 
 class Question {
@@ -15,7 +15,7 @@ input.forEach(q => {
     questions.push(new Question(q));
 });
 
-let conqueredPlanets = 0;
+
 let randq;
 let QuizInForeground;
 function ModifyQuizInForeground(q){
@@ -24,9 +24,6 @@ function ModifyQuizInForeground(q){
 
 let answerable = true;
 function Popup(obj, canvas) {
-    if (selected == 4 && conqueredPlanets == 1) {
-        conqueredPlanets++;
-    }
     let timer = document.getElementById("timer");
     timer.innerText = "6";
     answerable = true;
@@ -65,7 +62,7 @@ function Popup(obj, canvas) {
                 case true:
                     if (obj.hp == obj.maxHp) {
                         obj.isConquered = true;
-                        conqueredPlanets ++;
+                        setConcPlanet(conqueredPlanets+1);
                         obj.planetInfoRaw[obj.planetInfoRaw.length-2] = '<p style="color: rgb(74, 228, 163);">Staus: Ally</p>';
                         obj.planetInfoRaw.pop();
                         obj.planetInfo = obj.infoToStr();
@@ -98,7 +95,6 @@ function OffTimer(element, canvas) {
         
         QuizInForeground = false;
     }, 1000);
-
 }
 function validate(element) {
     let current_planet = objects[objects.length - conqueredPlanets - 1];

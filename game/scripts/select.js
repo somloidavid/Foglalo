@@ -4,8 +4,6 @@ import { setselected } from './game.js';
 import { main } from './game.js';
 
 
-
-
 function inspect(a){
     const elso = document.getElementById("elso");
     const masodik = document.getElementById("masodik");
@@ -49,7 +47,6 @@ function inspect(a){
         nev.innerText = "Herby, Előző életében Lil Peep"
         titulus.innerText = "Sámsoni legenda"
         karakter = a
-
      }
      if(a == 4){
         negyedik.classList.add("highlighted")
