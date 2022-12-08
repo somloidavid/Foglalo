@@ -26,11 +26,11 @@ class Obj {
         }
         if (!isConquered) {
             this.planetInfoRaw.push('<p style="color: rgb(228, 74, 74);">Staus: Enemy</p>');
+            this.planetInfoRaw.push(`<p style="color: rgb(228, 74, 74);" id="hp">${this.hp}/${this.question_limit}</p>`);
         }
         else {
             this.planetInfoRaw.push('<p style="color: rgb(74, 228, 163);">Staus: Ally</p>');
         }
-        this.planetInfoRaw.push(`<p style="color: rgb(228, 74, 74);" id="hp">${this.hp}/${this.question_limit}</p>`);
         this.planetInfo = this.infoToStr();
 
     

@@ -67,6 +67,7 @@ function Popup(obj, canvas) {
                         obj.isConquered = true;
                         conqueredPlanets ++;
                         obj.planetInfoRaw[obj.planetInfoRaw.length-2] = '<p style="color: rgb(74, 228, 163);">Staus: Ally</p>';
+                        obj.planetInfoRaw.pop();
                         obj.planetInfo = obj.infoToStr();
                         infoContent.innerHTML = obj.planetInfo;
                     }
