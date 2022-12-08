@@ -7,6 +7,8 @@ class Obj {
         }
 
         this.rad = rad;
+        this.hp = limit;
+        this.question_limit = limit;
 
         this.size = {
             width: width,
