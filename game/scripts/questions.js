@@ -23,7 +23,7 @@ function ModifyQuizInForeground(q){
 }
 
 let answerable = true;
-function Popup(obj) {
+function Popup(obj, canvas) {
     if (selected == 4 && conqueredPlanets == 1) {
         conqueredPlanets++;
     }
@@ -31,8 +31,9 @@ function Popup(obj) {
     timer.innerText = "6";
     answerable = true;
     QuizInForeground = true;
-    document.getElementById("popup").style.display = "flex";
     document.getElementById("popup").style.opacity = "1";
+    document.getElementById("popup").style.top = "25%";
+    canvas.style.filter = "brightness(30%)";
     document.getElementById("planet_info").style.display = "none";
     randq = questions.splice(Math.floor(Math.random() * questions.length), 1);
     document.getElementById("question").innerHTML = randq[0].question;
@@ -78,17 +79,18 @@ function Popup(obj) {
                 default:
                     break;
             }
-            OffTimer(elem);
+            OffTimer(elem, canvas);
         }
     }, 1000);
 }
 
-function OffTimer(element) {
+function OffTimer(element, canvas) {
     setTimeout(() => {
         // let notif = document.getElementById("notif");
         // notif.style.display = "block";
         // notif.style.opacity = "1";
-        document.getElementById("popup").style.display = "none";
+        document.getElementById("popup").style.top = "-900px";
+        canvas.style.filter = "brightness(100%)";
         document.getElementById("planet_info").style.display = "flex";
         if (element)
             element.className = "choice";

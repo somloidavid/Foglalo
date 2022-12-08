@@ -89,6 +89,7 @@ body div#main div#planet_info #c_button:hover h1 {
 }
 body div#main canvas {
   display: none;
+  transition: all 0.3s;
 }
 body div#main div.leiras {
   height: 70vh;
@@ -238,55 +239,63 @@ body div#main div.container {
 body div#main div.container div#popup {
   z-index: 1;
   position: absolute;
-  top: 25%;
   background-image: url("../img/hud/questionbg.png");
+  top: -900px;
+  background-repeat: no-repeat;
   width: 900px;
   height: 600px;
-  display: none;
   opacity: 0;
-  transition: opacity 0.85s;
+  display: flex;
+  transition: all 0.85s;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
 }
 body div#main div.container div#popup .headline {
-  height: 129px;
-  width: calc(100% - 460px);
-  display: block;
+  height: 200px;
+  width: 560px;
+  display: flex;
+  justify-content: center;
 }
 body div#main div.container div#popup .headline h1 {
-  text-align: center;
+  display: flex;
+  width: 420px;
+  justify-content: center;
+  align-items: center;
   color: #88CDCA;
-  height: 129px;
   font-size: 35px;
+  height: 150px;
 }
 body div#main div.container div#popup .headline #timer {
-  height: 39px;
-  width: 42px;
-  font-size: 20px;
+  height: 50px;
+  width: 45px;
   position: absolute;
-  right: 0;
-  top: -5px;
+  left: 440px;
+  top: 155px;
 }
 body div#main div.container div#popup div.content {
   width: 100%;
-  height: 70%;
+  height: 65%;
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 body div#main div.container div#popup div.content div#answer {
   top: 28.7vh;
-  width: 55%;
-  height: 40vh;
+  width: 600px;
+  height: 100px;
 }
 body div#main div.container div#popup div.content div#answer div.choice {
+  cursor: pointer;
   transition: all 0.3s;
-  background-color: white;
+  background-image: url("../img/hud/question.png");
   border: 8px solid #88CDCA;
   margin-bottom: 20px;
-  width: 60%;
-  height: 9vh;
+  display: flex;
+  width: 365px;
+  height: 100px;
+  align-items: center;
+  justify-content: center;
 }
 body div#main div.container div#popup div.content div#answer div.choice p {
   color: black;
@@ -298,11 +307,9 @@ body div#main div.container div#popup div.content div#answer div.chosen_answ {
 }
 body div#main div.container div#popup div.content div#answer div.correct {
   border-color: rgb(45, 63, 45);
-  background-color: rgb(71, 109, 71);
 }
 body div#main div.container div#popup div.content div#answer div.incorrect {
   border-color: rgb(116, 24, 24);
-  background-color: rgb(160, 64, 64);
 }
 body div#main div.container div#popup div.content img {
   height: 300px;
