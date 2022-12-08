@@ -33,9 +33,6 @@ function Popup(obj, canvas) {
     if (selected != 4 && obj.imgSrc == 4) {
         document.getElementById("kanye").style.bottom = "0px";
     }
-    else if (obj.imgSrc == 4) {
-        setConcPlanet(conqueredPlanets+1);
-    }
     canvas.style.filter = "brightness(30%)";
     document.getElementById("planet_info").style.display = "none";
     randq = questions.splice(Math.floor(Math.random() * questions.length), 1);
