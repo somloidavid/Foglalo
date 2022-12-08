@@ -70,6 +70,7 @@ function select(){
       document.getElementById("planet_info").style.display = "flex"
       document.getElementById("main-canvas").style.display = "block";
       document.getElementById("hide").style.display = "none";
+      document.getElementById("kanye").style.display = "block";
       main()  
    }
 }

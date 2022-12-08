@@ -30,6 +30,12 @@ function Popup(obj, canvas) {
     QuizInForeground = true;
     document.getElementById("popup").style.opacity = "1";
     document.getElementById("popup").style.top = "25%";
+    if (selected != 4 && obj.imgSrc == 4) {
+        document.getElementById("kanye").style.bottom = "0px";
+    }
+    else if (obj.imgSrc == 4) {
+        setConcPlanet(conqueredPlanets+1);
+    }
     canvas.style.filter = "brightness(30%)";
     document.getElementById("planet_info").style.display = "none";
     randq = questions.splice(Math.floor(Math.random() * questions.length), 1);
@@ -67,6 +73,9 @@ function Popup(obj, canvas) {
                         obj.planetInfoRaw.pop();
                         obj.planetInfo = obj.infoToStr();
                         infoContent.innerHTML = obj.planetInfo;
+                        if (obj.imgSrc == 0) {
+                            window.open("https://www.youtube.com/watch?v=YCQW5-fOX-4&t=77s");
+                        }
                     }
                     break;
                 // case undefined: 
@@ -88,6 +97,7 @@ function OffTimer(element, canvas) {
         // notif.style.display = "block";
         // notif.style.opacity = "1";
         document.getElementById("popup").style.top = "-900px";
+        document.getElementById("kanye").style.bottom = "-256px";
         canvas.style.filter = "brightness(100%)";
         document.getElementById("planet_info").style.display = "flex";
         if (element)

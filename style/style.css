@@ -31,6 +31,12 @@ body div#main {
   display: block;
   overflow: auto;
 }
+body div#main #kanye {
+  transition: all 0.3s;
+  bottom: -256px;
+  position: absolute;
+  display: none;
+}
 body div#main div#planet_info {
   display: none;
   transition: opacity 0.3s ease-out;

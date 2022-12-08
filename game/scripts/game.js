@@ -110,9 +110,6 @@ function main() {
 
 function loop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    if (selected == 4 && conqueredPlanets == 1) {
-        setConcPlanet(conqueredPlanets+1);
-    }
     
     if (QuizInForeground || selected == null) { 
         mouse.clickable = false;
