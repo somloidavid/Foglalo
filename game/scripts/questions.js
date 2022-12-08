@@ -1,4 +1,5 @@
 import { objects } from "./game.js";
+import { selected } from "./select.js";
 const infoContent = document.getElementById("info_content");
 
 class Question {
@@ -16,6 +17,10 @@ input.forEach(q => {
 });
 
 let conqueredPlanets = 0;
+if (selected == 4 && conqueredPlanets == 1) {
+    conqueredPlanets++;
+}
+
 let randq;
 let QuizInForeground;
 function ModifyQuizInForeground(q){

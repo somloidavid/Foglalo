@@ -93,3 +93,4 @@ document.getElementById("negyedik").onclick = function() {
 // document.getElementById("negyedik").onclick = inspect(4);
 
 
+export {selected};
