@@ -87,6 +87,7 @@ function OffTimer(element) {
         document.getElementById("popup").style.display = "none";
         if (element)
             element.className = "choice";
+        
         QuizInForeground = false;
     }, 1000);
 
