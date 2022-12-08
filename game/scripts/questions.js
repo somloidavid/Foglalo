@@ -25,7 +25,7 @@ function ModifyQuizInForeground(q){
 let answerable = true;
 function Popup(obj, canvas) {
     let timer = document.getElementById("timer");
-    timer.innerText = "6";
+    timer.innerText = "11";
     answerable = true;
     QuizInForeground = true;
     document.getElementById("popup").style.opacity = "1";
@@ -71,7 +71,7 @@ function Popup(obj, canvas) {
                         obj.planetInfo = obj.infoToStr();
                         infoContent.innerHTML = obj.planetInfo;
                         if (obj.imgSrc == 0) {
-                            window.open("https://www.youtube.com/watch?v=YCQW5-fOX-4&t=77s");
+                            window.open("https://www.youtube.com/watch?v=YCQW5-fOX-4&t");
                         }
                     }
                     break;
