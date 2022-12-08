@@ -34,6 +34,7 @@ let mouse = {
     clickable: true,
 }
 
+let conqueredPlanets = 0;
 const planetInfo = document.getElementById("planet_info");
 const infoContent = document.getElementById("info_content");
 const infoButton = document.getElementById("c_button");
@@ -109,6 +110,9 @@ function main() {
 
 function loop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (selected == 4 && conqueredPlanets == 1) {
+        setConcPlanet(conqueredPlanets+1);
+    }
     
     if (QuizInForeground || selected == null) { 
         mouse.clickable = false;
@@ -125,7 +129,10 @@ function loop() {
 
         if (mouse.clickable) {
             if (obj.isCollideWithCursor(mouse, camera)) {
-                objToFocus = i;
+                console.log(i, objects.length - conqueredPlanets-1);
+                if (objects.length - conqueredPlanets-1 <= i) {
+                    objToFocus = i;
+                }
             }
         }
 
@@ -137,7 +144,9 @@ function loop() {
 
         if (mouse.clickable) {
             if (obj.isCollideWithCursor(mouse)) {
-                objToFocus += obj.dir;
+                if (objects.length - conqueredPlanets-1 < objToFocus || obj.dir == 1) {
+                    objToFocus += obj.dir;
+                }
                 if (objToFocus < 0) {
                     objToFocus = 0;
                 }
@@ -181,7 +190,12 @@ window.onmouseup = function (event) {
 function setselected(karakter){
     selected = karakter
 }
+
+function setConcPlanet(i) {
+    conqueredPlanets = i;
+}
+
 export { objects };
 export { setselected };
 export { main };
-export { selected };
+export { selected, conqueredPlanets, setConcPlanet };
