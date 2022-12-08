@@ -80,7 +80,7 @@ function main() {
             new Obj(1, 30, 200, 256, 256, 100, 256 / 2, "Norb's wonder land", ["Norb ehrt"], 1,false),
             new Obj(2, -200, 100, 256, 256, 20, 124 / 2, "Juputr", ["Juputr", "Bottom  text"], 1,false),
             new Obj(4, window.innerWidth/2, window.innerHeight/2, 256, 256, 0.3, 256 / 2, "Moon", ["Elm usk vs Kanye", "Kanye helye ugym"], 1,true),
-            new Obj(3, -300, 100, 128, 128, 0.01, 128/2, "Föld", ["Norbertek száma: 1"], 1,false),
+            new Obj(3, -300, 100, 128, 128, 0.01, 128/2, "Föld", "Norbertek száma: 1", 1,false),
         ];
     }
     else{ 
@@ -89,7 +89,7 @@ function main() {
             new Obj(1, 30, 200, 256, 256, 100, 256 / 2, "Norb's wonder land", ["Norb ehrt"], 1,false),
             new Obj(2, -200, 100, 256, 256, 20, 124 / 2, "Juputr", ["Juputr", "Bottom  text"], 1,false),
             new Obj(4, window.innerWidth/2, window.innerHeight/2, 256, 256, 0.3, 256 / 2, "Moon", ["Elm usk vs Kanye", "Kanye helye ugym"], 1,false),
-            new Obj(3, -300, 100, 128, 128, 0.01, 128/2, "Föld", ["Norbertek száma: 1"], 1,false),
+            new Obj(3, -300, 100, 128, 128, 0.01, 128/2, "Föld", "Norbertek száma: 1", 1,false),
         ];
     }
 
@@ -110,11 +110,10 @@ function main() {
 
 function loop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
-    if (obj.imgSrc == 4) {
+    if (selected == 4 && conqueredPlanets == 1) {
         setConcPlanet(conqueredPlanets+1);
     }
-
+    
     if (QuizInForeground || selected == null) { 
         mouse.clickable = false;
     }
