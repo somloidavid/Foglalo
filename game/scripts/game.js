@@ -120,7 +120,7 @@ function loop() {
         obj.relativeZ = obj.distance_from_cam * camera.z;
         if (!obj.isRenderAble(camera, min_distance, window)) continue;
         infoButton.onclick = function() {
-            Popup(obj);
+            Popup(obj, canvas);
         };
 
         if (mouse.clickable) {
