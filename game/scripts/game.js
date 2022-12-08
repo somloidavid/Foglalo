@@ -54,6 +54,8 @@ function main() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     mouse.clickable = false;
+    console.log(selected);
+
 
     ctx = canvas.getContext("2d");
     ctx.imageSmoothingEnabled = false;
@@ -89,6 +91,7 @@ function main() {
             new Obj(3, -300, 100, 128, 128, 0.01, 128/2, "Hah heh", null, 1,false),
         ];
     }
+
     
 
     hud_objs = [
