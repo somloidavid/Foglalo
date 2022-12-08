@@ -1,10 +1,10 @@
 import { Obj, setCoordsToCenter } from './obj.js';
 import { Popup, QuizInForeground } from './questions.js';
 import { HudArrow } from './hud.js';
-import { selected } from './select.js';
-import { xdd } from './select.js';
 
 
+
+let selected;
 let canvas;
 let ctx;
 let imgs;
@@ -70,8 +70,8 @@ function main() {
         createNewImg("../img/hud/right_arrow_select.png"),
         createNewImg("../img/hud/left_arrow_select.png"),
     ];
-    let xd = selected;
-    if (xd == 4){
+
+    if (selected == 4){
         objects = [
             new Obj(0, 30, -200, 92, 92, 2000, 92 / 2, "Some planet", ["Nothing special"], 2, false),
             new Obj(1, 30, 200, 256, 256, 100, 256 / 2, "Norb's wonder land", ["Norb gonna rape you"], 1,false),
@@ -161,7 +161,6 @@ function loop() {
     window.requestAnimationFrame(loop)
 }
 
-main()
 
 window.onmousemove = function (event) {
     mouse.x = event.clientX;
@@ -176,5 +175,9 @@ window.onmouseup = function (event) {
     mouse.clickable = true;
     mouse.pressed = false;
 };
-
+function setselected(karakter){
+    selected = karakter
+}
 export { objects };
+export { setselected };
+export { main };
