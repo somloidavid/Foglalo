@@ -61,7 +61,7 @@ function inspect(a){
 
 }
 function select(){
-   selected = karakter
+   selected = karakter;
    if (selected !=  null)
    {
       document.getElementById("planet_info").style.display = "flex"

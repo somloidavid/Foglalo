@@ -1,4 +1,5 @@
 import { objects } from "./game.js";
+import { HudArrow } from "./hud.js";
 const infoContent = document.getElementById("info_content");
 
 class Question {
@@ -101,7 +102,7 @@ function validate(element) {
         if (element.innerHTML == `<p>${randq[0].correct}</p>`) {
             current_planet.hp++;
             element.classList.add("correct");
-            document.getElementById("hp").innerHTML = `<p style="color: rgb(228, 74, 74);" id="hp">${current_planet.hp}/${2}</p>`;
+            document.getElementById("hp").innerHTML = `<p style="color: rgb(228, 74, 74);" id="hp">${current_planet.hp}/${current_planet.maxHp}</p>`;
             return true;
         }
         else {
