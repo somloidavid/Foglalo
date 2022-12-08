@@ -75,7 +75,6 @@ function select(){
       document.getElementById("hide").style.display = "none";
       main()  
    }
-   
 }
 
 document.getElementById("gob").onclick = select;
@@ -97,3 +96,4 @@ document.getElementById("negyedik").onclick = function() {
 // export {selected};
 
 
+export {selected};
