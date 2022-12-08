@@ -30,6 +30,7 @@ function Popup(obj) {
     QuizInForeground = true;
     document.getElementById("popup").style.display = "flex";
     document.getElementById("popup").style.opacity = "1";
+    document.getElementById("planet_info").style.display = "none";
     randq = questions.splice(Math.floor(Math.random() * questions.length), 1);
     document.getElementById("question").innerHTML = randq[0].question;
     const ch1 = document.getElementById("ch1");
@@ -84,6 +85,7 @@ function OffTimer(element) {
         // let notif = document.getElementById("notif");
         // notif.style.display = "block";
         // notif.style.opacity = "1";
+        document.getElementById("planet_info").style.display = "flex";
         document.getElementById("popup").style.display = "none";
         if (element)
             element.className = "choice";
