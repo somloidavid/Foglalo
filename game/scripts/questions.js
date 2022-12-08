@@ -9,7 +9,7 @@ class Question {
     }
 }
 
-const input = [["Ki Kriszhadvice?", "Tanács Krisztián", "A prediction-ök démonja", "A Béke Szigetének őrzője"], ["Milyen méretű Herby cigarettája?", "Közepes", "Kis", "Nagy"], ["Melyik egy chatbot neve?", "Málik Irén", "Stohl András", "Ben Dover"], ["Mi lett az L-ből az ismert népzene szerint?", "W", "N", "Szalonna"], ["Beugratós-e a Kvízapo.hu?", "Igen", "1kg vas", "GWM Music Production"], ["Hol található Nagybajom?", "Somogy megyében", "Az Isten háta mögött", "Csenevész mellett"], ["Mi a megfelelő öltözet(úgymond viselet) egy programozónak?", "Combzokni hozzá illő kiegészítőkkel", "Fehér ing", "Kényszerzubbony"], ["Mi 2022.12.07. vicces szava?", "Hebehurgya", "Istók", "Öblös"], ["Mennyit posztol Sanyi bá naponta?", "∞", "3", "Sándor"], ["Melyik az a Kisé zene?","Costa Rica", "Pörög a show", "Sándor Kevin ?" ], ["Hogy érzi magát Kisé (Sándor Kevin) a No love című operaénekben?", "Mint majka 2012 ben", "Még mindig ki az a kisé?", "Mint Márta Sándor sanyi"], ["adyváros jó hely?", "Csak egy kicsit", "Jobb mint Francia ország", "megböknek az oppok :("]];
+const input = [["Ki Kriszhadvice?", "Tanács Krisztián", "A prediction-ök démonja", "A Béke Szigetének őrzője"], ["Milyen méretű Herby cigarettája?", "Közepes", "Kis", "Nagy"], ["Melyik egy chatbot neve?", "Málik Irén", "Stohl András", "Ben Dover"], ["Mi lett az L-ből az ismert népzene szerint?", "W", "N", "Szalonna"], ["Beugratós-e a Kvízapo.hu?", "Igen", "1kg vas", "GWM Music Production"], ["Hol található Nagybajom?", "Somogy megyében", "Az Isten háta mögött", "Csenevész mellett"], ["Mi a megfelelő öltözet(úgymond viselet) egy programozónak?", "Combzokni hozzá illő kiegészítőkkel", "Fehér ing", "Kényszerzubbony"], ["Mi 2022.12.07. vicces szava?", "Hebehurgya", "Istók", "Öblös"], ["Mennyit posztol Sanyi bá naponta?", "∞", "3", "Sándor"], ["Melyik az a Kisé zene?","Costa Rica", "Pörög a show", "Sándor Kevin ?" ], ["Hogy érzi magát Kisé (Sándor Kevin) a No love című operaénekben?", "Mint majka 2012 ben", "Még mindig ki az a kisé?", "Mint Márta Sándor sanyi"], ["adyváros jó hely?", "Csak egy kicsit", "Jobb mint Francia ország", "megböknek az oppok :("], ["Mi taszított nagyot a szentesi emberen a közmondás szerint?", "Hosszú kutya", "Rövid cickány", "Széles borjú"]];
 const questions = [];
 input.forEach(q => {
     questions.push(new Question(q));
@@ -96,8 +96,9 @@ function validate(element) {
     answerable = false;
     if (element) {
         if (element.innerHTML == `<p>${randq[0].correct}</p>`) {
+            current_planet.hp++;
             element.classList.add("correct");
-            document.getElementById("hp").innerHTML = `<p style="color: rgb(228, 74, 74);" id="hp">${current_planet.hp++}/${current_planet.question_limit}</p>`;
+            document.getElementById("hp").innerHTML = `<p style="color: rgb(228, 74, 74);" id="hp">${current_planet.hp}/${2}</p>`;
             return true;
         }
         else {
