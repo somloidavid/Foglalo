@@ -19,7 +19,7 @@ function inspect(a){
         masodik.classList.remove("highlighted")
         harmadik.classList.remove("highlighted")
         negyedik.classList.remove("highlighted")        
-        lore.innerText = " Sanyit 5x baszták ki instáról mert rasszista oltásellenes buta és mihazánkos, valamint pornót posztol. Igazi nagymagyar ezért fontosnak tartja magyarország fia, KriszhAdvice megmentését attól függetlenül hogy cigá.."
+        lore.innerText = " Sanyit 5x rakták ki a szűrét instáról mert rasszista, oltásellenes, buta és hamis információt terjeszt. Igazi nagymagyar ezért fontosnak tartja Magyarország fia, KriszhAdvice megmentését."
         stat.innerHTML = "<td>IQ</td><td>kevés</td></tr><tr><td>gyorsasag</td><td>kicsi</td></tr> <tr><td>Special</td><td title='Sanyi a Mi Hazánk Betyárseregét segítségül hívva a nagy bolygóknál mindig 2 vel kevesebb kérdéest kell eltalálnia '>Mi Hazánk</td></tr>"
         nev.innerText = "Sanyi"
         titulus.innerText = "Sándor Sanyi , barátoknak csak Sanyi"
