@@ -7,8 +7,8 @@ class Obj {
         }
 
         this.rad = rad;
-        this.hp = limit;
         this.question_limit = limit;
+        this.hp = 0;
 
         this.size = {
             width: width,
@@ -24,7 +24,7 @@ class Obj {
             }
         }
         this.planetInfoRaw.push('<p style="color: rgb(228, 74, 74);">Staus: Enemy</p>');
-        this.planetInfoRaw.push(`<p style="color: rgb(228, 74, 74);" id="hp">${limit}/${limit}</p>`);
+        this.planetInfoRaw.push(`<p style="color: rgb(228, 74, 74);" id="hp">${this.hp}/${this.question_limit}</p>`);
         this.planetInfo = this.infoToStr();
 
         this.isConquered = false;
