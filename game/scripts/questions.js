@@ -1,5 +1,4 @@
 import { objects } from "./game.js";
-import { HudArrow } from "./hud.js";
 const infoContent = document.getElementById("info_content");
 
 class Question {
@@ -31,7 +30,6 @@ function Popup(obj) {
     QuizInForeground = true;
     document.getElementById("popup").style.display = "flex";
     document.getElementById("popup").style.opacity = "1";
-    document.getElementById("planet_info").style.display = "none";
     randq = questions.splice(Math.floor(Math.random() * questions.length), 1);
     document.getElementById("question").innerHTML = randq[0].question;
     const ch1 = document.getElementById("ch1");
@@ -87,7 +85,6 @@ function OffTimer(element) {
         // notif.style.display = "block";
         // notif.style.opacity = "1";
         document.getElementById("popup").style.display = "none";
-        document.getElementById("planet_info").style.display = "flex";
         if (element)
             element.className = "choice";
         
@@ -102,7 +99,7 @@ function validate(element) {
         if (element.innerHTML == `<p>${randq[0].correct}</p>`) {
             current_planet.hp++;
             element.classList.add("correct");
-            document.getElementById("hp").innerHTML = `<p style="color: rgb(228, 74, 74);" id="hp">${current_planet.hp}/${current_planet.maxHp}</p>`;
+            document.getElementById("hp").innerHTML = `<p style="color: rgb(228, 74, 74);" id="hp">${current_planet.hp}/${2}</p>`;
             return true;
         }
         else {
