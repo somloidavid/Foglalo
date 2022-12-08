@@ -184,3 +184,4 @@ function setselected(karakter){
 export { objects };
 export { setselected };
 export { main };
+export { selected };
