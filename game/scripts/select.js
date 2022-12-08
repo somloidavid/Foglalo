@@ -1,7 +1,5 @@
 let karakter = null;
-let selected = 4;
-const xdd =  4 ;
-export {xdd};
+let selected = null;
 
 function inspect(a){
     const elso = document.getElementById("elso");
@@ -63,16 +61,13 @@ function inspect(a){
 
 }
 function select(){
-   selected = karakter;
+   selected = karakter
    if (selected !=  null)
    {
-      console.log(selected)
       document.getElementById("planet_info").style.display = "flex"
       document.getElementById("main-canvas").style.display = "block";
       document.getElementById("hide").style.display = "none";
-      
    }
-   
 }
 
 document.getElementById("gob").onclick = select;
