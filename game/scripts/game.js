@@ -1,8 +1,10 @@
 import { Obj, setCoordsToCenter } from './obj.js';
 import { Popup, QuizInForeground } from './questions.js';
 import { HudArrow } from './hud.js';
-import { selected } from './select.js';
 
+
+
+let selected;
 let canvas;
 let ctx;
 let imgs;
@@ -52,6 +54,8 @@ function main() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     mouse.clickable = false;
+    console.log(selected);
+
 
     ctx = canvas.getContext("2d");
     ctx.imageSmoothingEnabled = false;
@@ -69,24 +73,38 @@ function main() {
         createNewImg("../img/hud/left_arrow_select.png"),
     ];
 
-    objects = [
-        new Obj(0, 30, -200, 92, 92, 600, 92 / 2, "Some planet", ["Nothing special"], 2),
-        new Obj(1, 30, 200, 256, 256, 100, 256 / 2, "Norb's wonder land", ["Norb gonna rape you"], 1),
-        new Obj(2, -200, 100, 256, 256, 20, 124 / 2, "Juputr", ["Juputr", "Bottom  text"], 1),
-        new Obj(4, window.innerWidth/2, window.innerHeight/2, 256, 256, 0.3, 256 / 2, "Moon", ["Elm usk vs Kanye", "Super duper Hitler plot twist"], 1),
-        new Obj(3, -300, 100, 128, 128, 0.01, 128/2, "Hah heh", null, 1),
-    ];
+    if (selected == 4){
+        objects = [
+            new Obj(0, 30, -200, 92, 92, 2000, 92 / 2, "Some planet", ["Nothing special"], 2, false),
+            new Obj(1, 30, 200, 256, 256, 100, 256 / 2, "Norb's wonder land", ["Norb gonna rape you"], 1,false),
+            new Obj(2, -200, 100, 256, 256, 20, 124 / 2, "Juputr", ["Juputr", "Bottom  text"], 1,false),
+            new Obj(4, window.innerWidth/2, window.innerHeight/2, 256, 256, 0.3, 256 / 2, "Moon", ["Elm usk vs Kanye", "Super duper Hitler plot twist"], 1,true),
+            new Obj(3, -300, 100, 128, 128, 0.01, 128/2, "Hah heh", null, 1,false),
+        ];
+    }
+    else{ 
+        objects = [
+            new Obj(0, 30, -200, 92, 92, 2000, 92 / 2, "Some planet", ["Nothing special"], 2, false),
+            new Obj(1, 30, 200, 256, 256, 100, 256 / 2, "Norb's wonder land", ["Norb gonna rape you"], 1,false),
+            new Obj(2, -200, 100, 256, 256, 20, 124 / 2, "Juputr", ["Juputr", "Bottom  text"], 1,false),
+            new Obj(4, window.innerWidth/2, window.innerHeight/2, 256, 256, 0.3, 256 / 2, "Moon", ["Elm usk vs Kanye", "Super duper Hitler plot twist"], 1,false),
+            new Obj(3, -300, 100, 128, 128, 0.01, 128/2, "Hah heh", null, 1,false),
+        ];
+    }
+
+    
 
     hud_objs = [
         new HudArrow(1, 32, window.innerHeight / 2 - 32, 32, 64),
         new HudArrow(0, window.innerWidth - 32 * 2, window.innerHeight / 2 - 32, 32, 64),
     ];
-
+    
     min_distance = 1;
     objToFocus = objects.length - 1;
-
+    
     window.requestAnimationFrame(loop);
 }
+
 
 
 function loop() {
@@ -146,7 +164,6 @@ function loop() {
     window.requestAnimationFrame(loop)
 }
 
-main()
 
 window.onmousemove = function (event) {
     mouse.x = event.clientX;
@@ -161,3 +178,9 @@ window.onmouseup = function (event) {
     mouse.clickable = true;
     mouse.pressed = false;
 };
+function setselected(karakter){
+    selected = karakter
+}
+export { objects };
+export { setselected };
+export { main };

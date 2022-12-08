@@ -1,5 +1,5 @@
 class Obj {
-    constructor(index, x, y, width, height, dst_cam, rad, planet_name, additionalInfo, limit) {
+    constructor(index, x, y, width, height, dst_cam, rad, planet_name, additionalInfo, limit, isConquered) {
         this.imgSrc = index;
         this.pos = {
             x: x,
@@ -7,6 +7,9 @@ class Obj {
         }
 
         this.rad = rad;
+        this.question_limit = limit;
+        this.maxHp = limit; 
+        this.hp = 0;
 
         this.size = {
             width: width,
@@ -21,11 +24,17 @@ class Obj {
                 this.planetInfoRaw.push('<p>' + additionalInfo[i] + '</p>');
             }
         }
-        this.planetInfoRaw.push('<p style="color: rgb(228, 74, 74);">Staus: Enemy</p>');
+        if (!isConquered) {
+            this.planetInfoRaw.push('<p style="color: rgb(228, 74, 74);">Staus: Enemy</p>');
+        }
+        else {
+            this.planetInfoRaw.push('<p style="color: rgb(74, 228, 163);">Staus: Ally</p>');
+        }
+        this.planetInfoRaw.push(`<p style="color: rgb(228, 74, 74);" id="hp">${this.hp}/${this.question_limit}</p>`);
         this.planetInfo = this.infoToStr();
 
-        this.question_limit = limit;
-        this.isConquered = false;
+    
+        this.isConquered = isConquered;
     }
 
     get_center() {

@@ -1,5 +1,10 @@
 let karakter = null;
-let selected = null;
+let selected = 4;
+import { setselected } from './game.js';
+import { main } from './game.js';
+
+
+
 
 function inspect(a){
     const elso = document.getElementById("elso");
@@ -52,7 +57,7 @@ function inspect(a){
         harmadik.classList.remove("highlighted")
         elso.classList.remove("highlighted")           
         lore.innerHTML = "Kenya Waste igazabol. Miután megcsalták, átverték mély Keresztény lett és ugy gondolta hogy ideje a villian arcnak ezert a kisebbféle zsidóellenességből oda jutott hogy elismerje Hitler jó emberi értékeit, jó keresztényként tartsa számon "
-        stat.innerHTML = "<td>IQ</td><td><a href='https://cdn.discordapp.com/attachments/1004405326331793548/1048973461466382386/image.png' target='_blank'>133</a></td></tr><tr><td>gyorsasag</td><td>csak egy kicsit</td></tr> <tr><td>Special</td><td title='Hitler támogatása miatt a holdon bújó zombinácik nekiadják a holdat a játék kezdetén'>Zombinácik</td></tr>"
+        stat.innerHTML = "<td>IQ</td><td><a href='https://cdn.discordapp.com/attachments/1004405326331793548/1048973461466382386/image.png' target='_blank'>133</a></td></tr><tr><td>gyorsasag</td><td>csak egy kicsit</td></tr> <tr><td>Special</td><td title='Hitler támogatása miatt a holdon bújó zombinácik nekiadják a holdat a játék kezdetén'>Mindvégig a Holdon voltak</td></tr>"
         nev.innerText = "Kanye West"
         titulus.innerText = "Cancelled mellet az illusztráció konkrétan"        
         karakter = a
@@ -60,13 +65,15 @@ function inspect(a){
      }
 
 }
-function select(){
-   selected = karakter
-   if (selected !=  null)
+function select(){ 
+  
+   if (karakter !=  null)
    {
+      setselected(karakter);
       document.getElementById("planet_info").style.display = "flex"
       document.getElementById("main-canvas").style.display = "block";
       document.getElementById("hide").style.display = "none";
+      main()  
    }
 }
 
@@ -86,6 +93,7 @@ document.getElementById("negyedik").onclick = function() {
 // document.getElementById("masodik").onclick = inspect(2);
 // document.getElementById("harmadik").onclick = inspect(3);
 // document.getElementById("negyedik").onclick = inspect(4);
+// export {selected};
 
 
 export {selected};
